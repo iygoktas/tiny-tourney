@@ -71,6 +71,17 @@ public partial class BattleController : Control
 
 		PlayerHpBar.ShowPercentage = false;
 		EnemyHpBar.ShowPercentage = false;
+
+		// A ProgressBar's minimum height normally comes from its percentage label's font.
+		// With that label turned off, and StyleBoxTexture reporting only its margins
+		// (not the source image's full height) as its minimum size, the bar collapsed
+		// to a sliver. Pin a real height instead of relying on either.
+		PlayerHpBar.CustomMinimumSize = new Vector2(0f, 26f);
+		EnemyHpBar.CustomMinimumSize = new Vector2(0f, 26f);
+
+		// Keeps the newest line in view as the log fills, rather than the player
+		// having to scroll to see what just happened.
+		LogLabel.ScrollFollowing = true;
 		_playerBarLabel = CreateBarLabel(PlayerHpBar);
 		_enemyBarLabel = CreateBarLabel(EnemyHpBar);
 		UpdateBarLabels();
