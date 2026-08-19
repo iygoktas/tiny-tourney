@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/WeaponData.cs" id="1_weapon"]
+
+[resource]
+script = ExtResource("1_weapon")
+Id = "W06"
+DisplayName = "Sunflare Spear"
+Tier = 3
+MinLevel = 26
+NormalDamage = 74.0
+ThrustDamage = 60.0
+CritChance = 0.22
+CritMultiplier = 1.7
+StrScaling = 0.42
+IconPath = "res://assets/icons/weapons/w06_sunflare_spear.png"

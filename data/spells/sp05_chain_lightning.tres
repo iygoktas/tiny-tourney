@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/SpellData.cs" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+Id = "SP05"
+DisplayName = "Chain Lightning"
+Tier = 3
+MinLevel = 17
+DamageType = 1
+BaseDamage = 48.0
+ManaCost = 26
+Cooldown = 4.0
+IconPath = "res://assets/icons/spells/sp05_chain_lightning.png"
+VfxPath = "res://assets/vfx/spells/sp05_chain_lightning.png"

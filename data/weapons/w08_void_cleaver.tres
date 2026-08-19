@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/WeaponData.cs" id="1_weapon"]
+
+[resource]
+script = ExtResource("1_weapon")
+Id = "W08"
+DisplayName = "Void Cleaver"
+Tier = 4
+MinLevel = 42
+NormalDamage = 128.0
+ThrustDamage = 104.0
+CritChance = 0.25
+CritMultiplier = 1.8
+StrScaling = 0.50
+IconPath = "res://assets/icons/weapons/w08_void_cleaver.png"

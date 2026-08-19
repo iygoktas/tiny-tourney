@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/SpellData.cs" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+Id = "SP02"
+DisplayName = "Static Shock"
+Tier = 1
+MinLevel = 4
+DamageType = 1
+BaseDamage = 18.0
+ManaCost = 12
+Cooldown = 2.5
+IconPath = "res://assets/icons/spells/sp02_static_shock.png"
+VfxPath = "res://assets/vfx/spells/sp02_static_shock.png"

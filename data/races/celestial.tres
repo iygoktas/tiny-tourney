@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RaceData" format=3 uid="uid://be7wcr0xqxrxt"]
+
+[ext_resource type="Script" uid="uid://ke3bsv0kv4j4" path="res://scripts/data/RaceData.cs" id="1_race"]
+[ext_resource type="Script" uid="uid://dfeecxtp0v8vr" path="res://scripts/data/StatBlock.cs" id="2_stats"]
+
+[sub_resource type="Resource" id="StatBlock_celestial"]
+script = ExtResource("2_stats")
+Str = 1
+Spd = 5
+Dur = 7
+Dex = 5
+Luk = 7
+Int = 5
+
+[resource]
+script = ExtResource("1_race")
+Id = "celestial"
+DisplayName = "Celestial"
+BaseStats = SubResource("StatBlock_celestial")
+VisualIdentityNote = "Winged/radiant, white-gold palette, holy armor, calm and majestic"
+ReferenceImagePath = "res://assets/characters/celestial/_refs/celestial_ref.png"

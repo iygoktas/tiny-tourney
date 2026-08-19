@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ctkwvgkswwq6i"]
+
+[ext_resource type="Script" uid="uid://b5u3svt45wvgp" path="res://scripts/ui/SettingsController.cs" id="1_emdcu"]
+
+[node name="Settings" type="Control" unique_id=201291529 node_paths=PackedStringArray("MusicCheckButton", "SfxCheckButton", "LanguageOptionButton", "SlotList", "DeleteSlotButton", "DeleteConfirmDialog", "BackButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_emdcu")
+MusicCheckButton = NodePath("VBoxContainer/MusicCheckButton")
+SfxCheckButton = NodePath("VBoxContainer/SfxCheckButton")
+LanguageOptionButton = NodePath("VBoxContainer/LanguageOptionButton")
+SlotList = NodePath("VBoxContainer/SlotList")
+DeleteSlotButton = NodePath("VBoxContainer/DeleteSlotButton")
+DeleteConfirmDialog = NodePath("DeleteConfirmDialog")
+BackButton = NodePath("VBoxContainer/BackButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1806758850]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MusicCheckButton" type="CheckButton" parent="VBoxContainer" unique_id=1598868780]
+layout_mode = 2
+
+[node name="SfxCheckButton" type="CheckButton" parent="VBoxContainer" unique_id=1519762842]
+layout_mode = 2
+
+[node name="LanguageOptionButton" type="OptionButton" parent="VBoxContainer" unique_id=1097262669]
+layout_mode = 2
+
+[node name="SlotList" type="ItemList" parent="VBoxContainer" unique_id=524827897]
+layout_mode = 2
+
+[node name="DeleteSlotButton" type="Button" parent="VBoxContainer" unique_id=2080581673]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1521814660]
+layout_mode = 2
+
+[node name="DeleteConfirmDialog" type="ConfirmationDialog" parent="." unique_id=1072100430]

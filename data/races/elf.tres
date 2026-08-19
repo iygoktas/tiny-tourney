@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RaceData" format=3 uid="uid://cl1qmj7rwl0fs"]
+
+[ext_resource type="Script" uid="uid://ke3bsv0kv4j4" path="res://scripts/data/RaceData.cs" id="1_race"]
+[ext_resource type="Script" uid="uid://dfeecxtp0v8vr" path="res://scripts/data/StatBlock.cs" id="2_stats"]
+
+[sub_resource type="Resource" id="StatBlock_elf"]
+script = ExtResource("2_stats")
+Str = 3
+Spd = 7
+Dur = 5
+Dex = 7
+Luk = 4
+Int = 4
+
+[resource]
+script = ExtResource("1_race")
+Id = "elf"
+DisplayName = "Elf"
+BaseStats = SubResource("StatBlock_elf")
+VisualIdentityNote = "Slender build, pointed ears, green-gold palette, light leather armor, elegant"
+ReferenceImagePath = "res://assets/characters/elf/_refs/elf_ref.png"

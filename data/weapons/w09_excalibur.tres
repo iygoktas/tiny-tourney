@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/WeaponData.cs" id="1_weapon"]
+
+[resource]
+script = ExtResource("1_weapon")
+Id = "W09"
+DisplayName = "Excalibur"
+Tier = 5
+MinLevel = 47
+NormalDamage = 165.0
+ThrustDamage = 135.0
+CritChance = 0.28
+CritMultiplier = 2.0
+StrScaling = 0.55
+IconPath = "res://assets/icons/weapons/w09_excalibur.png"

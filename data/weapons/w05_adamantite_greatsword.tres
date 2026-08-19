@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/WeaponData.cs" id="1_weapon"]
+
+[resource]
+script = ExtResource("1_weapon")
+Id = "W05"
+DisplayName = "Adamantite Greatsword"
+Tier = 3
+MinLevel = 17
+NormalDamage = 56.0
+ThrustDamage = 45.0
+CritChance = 0.20
+CritMultiplier = 1.7
+StrScaling = 0.40
+IconPath = "res://assets/icons/weapons/w05_adamantite_greatsword.png"

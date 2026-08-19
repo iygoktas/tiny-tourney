@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/SpellData.cs" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+Id = "SP04"
+DisplayName = "Mind Blast"
+Tier = 2
+MinLevel = 12
+DamageType = 3
+BaseDamage = 34.0
+ManaCost = 20
+Cooldown = 3.5
+IconPath = "res://assets/icons/spells/sp04_mind_blast.png"
+VfxPath = "res://assets/vfx/spells/sp04_mind_blast.png"

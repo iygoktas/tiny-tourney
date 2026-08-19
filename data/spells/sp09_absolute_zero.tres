@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/SpellData.cs" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+Id = "SP09"
+DisplayName = "Absolute Zero"
+Tier = 5
+MinLevel = 47
+DamageType = 2
+BaseDamage = 138.0
+ManaCost = 58
+Cooldown = 6.0
+IconPath = "res://assets/icons/spells/sp09_absolute_zero.png"
+VfxPath = "res://assets/vfx/spells/sp09_absolute_zero.png"

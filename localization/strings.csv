@@ -1,0 +1,38 @@
+keys,en,tr
+APP_NAME,Tiny Tourney,Tiny Tourney
+BTN_FIGHT,Fight,Dövüş
+STAT_STR,Strength,Güç
+STAT_SPD,Speed,Hız
+STAT_DUR,Durability,Dayanıklılık
+STAT_DEX,Dexterity,Çeviklik
+STAT_LUK,Luck,Şans
+STAT_INT,Intelligence,Zeka
+COMBAT_MISS,Miss,Iska
+COMBAT_BLOCKED,Blocked,Bloklandı
+COMBAT_COUNTERED,Counter!,Karşı Saldırı!
+COMBAT_PAID_BACK,Payback!,Misilleme!
+COMBAT_CRITICAL,Critical!,Kritik Vuruş!
+RACE_HUMAN,Human,İnsan
+RACE_ELF,Elf,Elf
+RACE_ORC,Orc,Ork
+RACE_UNDEAD,Undead,Yarı Ölü
+RACE_DEMON,Demon,İblis
+RACE_CELESTIAL,Celestial,Göksel
+WHEEL_CATEGORY_STAT,Stat,İstatistik
+WHEEL_CATEGORY_WEAPON,Weapon,Silah
+WHEEL_CATEGORY_SPELL,Spell,Büyü
+BTN_CONTINUE,Continue,Devam Et
+BTN_NEW_CHARACTER,New Character,Yeni Karakter
+BTN_DELETE,Delete,Sil
+BTN_BACK,Back,Geri
+SLOT_EMPTY,Empty Slot,Boş Slot
+CONFIRM_DELETE_TITLE,Delete Character?,Karakteri Sil?
+CONFIRM_DELETE_TEXT,This will permanently delete this character. This cannot be undone.,Bu karakter kalıcı olarak silinecek. Bu işlem geri alınamaz.
+SETTINGS_MUSIC,Music,Müzik
+SETTINGS_SFX,Sound Effects,Ses Efektleri
+SETTINGS_LANGUAGE,Language,Dil
+LANG_EN,English,İngilizce
+LANG_TR,Turkish,Türkçe
+STAT_HP,HP,Can
+ITEM_NONE,None,Yok
+BOSS_LABEL,BOSS,BOSS

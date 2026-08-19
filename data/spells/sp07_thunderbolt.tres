@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/SpellData.cs" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+Id = "SP07"
+DisplayName = "Thunderbolt"
+Tier = 4
+MinLevel = 30
+DamageType = 1
+BaseDamage = 82.0
+ManaCost = 40
+Cooldown = 5.0
+IconPath = "res://assets/icons/spells/sp07_thunderbolt.png"
+VfxPath = "res://assets/vfx/spells/sp07_thunderbolt.png"

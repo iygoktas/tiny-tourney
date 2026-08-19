@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/WeaponData.cs" id="1_weapon"]
+
+[resource]
+script = ExtResource("1_weapon")
+Id = "W01"
+DisplayName = "Wooden Club"
+Tier = 1
+MinLevel = 1
+NormalDamage = 8.0
+ThrustDamage = 6.0
+CritChance = 0.15
+CritMultiplier = 1.5
+StrScaling = 0.3
+IconPath = "res://assets/icons/weapons/w01_wooden_club.png"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RaceData" format=3 uid="uid://c8xu23kiax6xu"]
+
+[ext_resource type="Script" uid="uid://ke3bsv0kv4j4" path="res://scripts/data/RaceData.cs" id="1_race"]
+[ext_resource type="Script" uid="uid://dfeecxtp0v8vr" path="res://scripts/data/StatBlock.cs" id="2_stats"]
+
+[sub_resource type="Resource" id="StatBlock_undead"]
+script = ExtResource("2_stats")
+Str = 5
+Spd = 2
+Dur = 8
+Dex = 5
+Luk = 5
+Int = 5
+
+[resource]
+script = ExtResource("1_race")
+Id = "undead"
+DisplayName = "Undead"
+BaseStats = SubResource("StatBlock_undead")
+VisualIdentityNote = "Skeletal/decayed, pale gray-blue palette, torn cloak, empty eye sockets"
+ReferenceImagePath = "res://assets/characters/undead/_refs/undead_ref.png"

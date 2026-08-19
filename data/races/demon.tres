@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RaceData" format=3 uid="uid://dgqwq8h4qo3ea"]
+
+[ext_resource type="Script" uid="uid://ke3bsv0kv4j4" path="res://scripts/data/RaceData.cs" id="1_race"]
+[ext_resource type="Script" uid="uid://dfeecxtp0v8vr" path="res://scripts/data/StatBlock.cs" id="2_stats"]
+
+[sub_resource type="Resource" id="StatBlock_demon"]
+script = ExtResource("2_stats")
+Str = 7
+Spd = 5
+Dur = 1
+Dex = 5
+Luk = 5
+Int = 7
+
+[resource]
+script = ExtResource("1_race")
+Id = "demon"
+DisplayName = "Demon"
+BaseStats = SubResource("StatBlock_demon")
+VisualIdentityNote = "Horned, red-black palette, fiery details, aggressive silhouette"
+ReferenceImagePath = "res://assets/characters/demon/_refs/demon_ref.png"

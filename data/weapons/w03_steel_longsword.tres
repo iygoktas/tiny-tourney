@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/WeaponData.cs" id="1_weapon"]
+
+[resource]
+script = ExtResource("1_weapon")
+Id = "W03"
+DisplayName = "Steel Longsword"
+Tier = 2
+MinLevel = 8
+NormalDamage = 28.0
+ThrustDamage = 22.0
+CritChance = 0.18
+CritMultiplier = 1.6
+StrScaling = 0.35
+IconPath = "res://assets/icons/weapons/w03_steel_longsword.png"

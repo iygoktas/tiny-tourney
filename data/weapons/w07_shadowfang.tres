@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/WeaponData.cs" id="1_weapon"]
+
+[resource]
+script = ExtResource("1_weapon")
+Id = "W07"
+DisplayName = "Shadowfang"
+Tier = 4
+MinLevel = 30
+NormalDamage = 98.0
+ThrustDamage = 80.0
+CritChance = 0.25
+CritMultiplier = 1.8
+StrScaling = 0.48
+IconPath = "res://assets/icons/weapons/w07_shadowfang.png"

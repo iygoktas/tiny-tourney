@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://clr6akbgj2kb"]
+
+[ext_resource type="Script" uid="uid://c50b2ekt7qsgq" path="res://scripts/ui/CharacterCreateController.cs" id="1_1ff4v"]
+
+[node name="CharacterCreateController" type="Control" unique_id=1661887129 node_paths=PackedStringArray("RaceOptionButton", "NameLineEdit", "ConfirmButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ff4v")
+RaceOptionButton = NodePath("RaceOptionButton")
+NameLineEdit = NodePath("NameLineEdit")
+ConfirmButton = NodePath("ConfirmButton")
+
+[node name="RaceOptionButton" type="OptionButton" parent="." unique_id=117097477]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+
+[node name="NameLineEdit" type="LineEdit" parent="." unique_id=1947329609]
+layout_mode = 0
+offset_right = 68.5
+offset_bottom = 31.0
+
+[node name="ConfirmButton" type="Button" parent="." unique_id=1129426616]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

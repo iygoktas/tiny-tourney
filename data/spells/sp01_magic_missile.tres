@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/SpellData.cs" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+Id = "SP01"
+DisplayName = "Magic Missile"
+Tier = 1
+MinLevel = 1
+DamageType = 3
+BaseDamage = 15.0
+ManaCost = 8
+Cooldown = 1.5
+IconPath = "res://assets/icons/spells/sp01_magic_missile.png"
+VfxPath = "res://assets/vfx/spells/sp01_magic_missile.png"

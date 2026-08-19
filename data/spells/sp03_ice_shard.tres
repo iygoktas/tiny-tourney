@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/SpellData.cs" id="1_spell"]
+
+[resource]
+script = ExtResource("1_spell")
+Id = "SP03"
+DisplayName = "Ice Shard"
+Tier = 2
+MinLevel = 8
+DamageType = 2
+BaseDamage = 26.0
+ManaCost = 16
+Cooldown = 3.0
+IconPath = "res://assets/icons/spells/sp03_ice_shard.png"
+VfxPath = "res://assets/vfx/spells/sp03_ice_shard.png"

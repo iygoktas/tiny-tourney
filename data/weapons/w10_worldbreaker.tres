@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/WeaponData.cs" id="1_weapon"]
+
+[resource]
+script = ExtResource("1_weapon")
+Id = "W10"
+DisplayName = "Worldbreaker"
+Tier = 5
+MinLevel = 65
+NormalDamage = 210.0
+ThrustDamage = 172.0
+CritChance = 0.30
+CritMultiplier = 2.0
+StrScaling = 0.60
+IconPath = "res://assets/icons/weapons/w10_worldbreaker.png"

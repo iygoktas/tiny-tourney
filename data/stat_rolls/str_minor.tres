@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatRollData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/StatRollData.cs" id="1_statroll"]
+
+[resource]
+script = ExtResource("1_statroll")
+Stat = 0
+Amount = 2.0
+Tier = 1
+MinLevel = 1
