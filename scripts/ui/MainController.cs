@@ -31,6 +31,23 @@ public partial class MainController : Control
 	/// </summary>
 	[Export] public Button SettingsButton;
 
+	// Everything below is optional. The screen was built as a flat column of labels, and
+	// these are the pieces that turn it into something with a shape. Any of them can be
+	// left unassigned while the scene is being rebuilt — the screen still loads, it just
+	// shows less.
+
+	/// <summary>The character's own sprite, so the screen shows who you are playing.</summary>
+	[Export] public TextureRect CharacterPortrait;
+
+	/// <summary>Race name, sitting under the character's name.</summary>
+	[Export] public Label RaceLabel;
+
+	/// <summary>Progress toward the next level, as a bar rather than only "3/16".</summary>
+	[Export] public ProgressBar XpBar;
+
+	[Export] public Label AttributesHeaderLabel;
+	[Export] public Label EquipmentHeaderLabel;
+
 	public override void _Ready()
 	{
 		RefreshLabels();
@@ -41,6 +58,16 @@ public partial class MainController : Control
 			SettingsButton.Text = TranslationServer.Translate("BTN_SETTINGS");
 			SettingsButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/screens/settings.tscn");
 		}
+
+		if (AttributesHeaderLabel != null)
+		{
+			AttributesHeaderLabel.Text = TranslationServer.Translate("SECTION_ATTRIBUTES");
+		}
+
+		if (EquipmentHeaderLabel != null)
+		{
+			EquipmentHeaderLabel.Text = TranslationServer.Translate("SECTION_EQUIPMENT");
+		}
 	}
 
 	private void RefreshLabels()
@@ -48,9 +75,31 @@ public partial class MainController : Control
 		var save = GameState.Instance.Active;
 		var stats = save.CurrentStats;
 
+		int xpNeeded = XpCurve.XpRequiredForLevel(save.Level);
+
 		CharacterNameLabel.Text = save.CharacterName;
 		LevelLabel.Text = $"{TranslationServer.Translate("LABEL_LEVEL")}: {save.Level}";
-		XpLabel.Text = $"{TranslationServer.Translate("LABEL_XP")}: {save.CurrentXp}/{XpCurve.XpRequiredForLevel(save.Level)}";
+		XpLabel.Text = $"{TranslationServer.Translate("LABEL_XP")}: {save.CurrentXp}/{xpNeeded}";
+
+		var race = ContentRepository.GetRaceById(save.RaceId);
+
+		if (RaceLabel != null)
+		{
+			RaceLabel.Text = race != null
+				? TranslationServer.Translate($"RACE_{race.Id.ToUpper()}")
+				: save.RaceId;
+		}
+
+		if (CharacterPortrait != null)
+		{
+			ShowPortrait(race);
+		}
+
+		if (XpBar != null)
+		{
+			XpBar.MaxValue = xpNeeded;
+			XpBar.Value = save.CurrentXp;
+		}
 		StrLabel.Text = $"{TranslationServer.Translate("STAT_STR")}: {stats.Str}";
 		SpdLabel.Text = $"{TranslationServer.Translate("STAT_SPD")}: {stats.Spd}";
 		DurLabel.Text = $"{TranslationServer.Translate("STAT_DUR")}: {stats.Dur}";
@@ -71,6 +120,27 @@ public partial class MainController : Control
 
 		// Owned by the script rather than the scene, so the label follows the chosen language.
 		FightButton.Text = TranslationServer.Translate("BTN_FIGHT");
+	}
+
+	/// <summary>
+	/// Puts the character's race sprite in the portrait slot. The same image the fighter
+	/// uses in battle, so the character on this screen is recognisably the one who walks
+	/// into the arena.
+	/// </summary>
+	private void ShowPortrait(RaceData race)
+	{
+		// Keep the pixel art crisp regardless of the project-wide filter.
+		CharacterPortrait.TextureFilter = CanvasItem.TextureFilterEnum.Nearest;
+
+		if (race?.ReferenceImagePath is { Length: > 0 } path && ResourceLoader.Exists(path))
+		{
+			CharacterPortrait.Texture = GD.Load<Texture2D>(path);
+		}
+		else
+		{
+			CharacterPortrait.Texture = null;
+			GD.PushWarning($"[MainController] No portrait for race '{race?.Id ?? "null"}'.");
+		}
 	}
 
 	public List<(WeaponData Data, bool Unlocked)> GetWeaponMenu()
