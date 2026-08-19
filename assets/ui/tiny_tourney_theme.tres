@@ -205,8 +205,10 @@ CheckButton/font_sizes/font_size = 19
 HBoxContainer/constants/separation = 14
 ItemList/colors/font_color = Color(0.804, 0.769, 0.706, 1)
 ItemList/colors/font_selected_color = Color(0.973, 0.918, 0.812, 1)
-ItemList/constants/v_separation = 8
-ItemList/font_sizes/font_size = 19
+ItemList/constants/v_separation = 20
+ItemList/constants/h_separation = 12
+ItemList/constants/line_separation = 6
+ItemList/font_sizes/font_size = 22
 ItemList/styles/panel = SubResource("StyleBoxFlat_log")
 ItemList/styles/selected = SubResource("StyleBoxFlat_list_selected")
 ItemList/styles/selected_focus = SubResource("StyleBoxFlat_list_selected")
@@ -246,3 +248,37 @@ VBoxContainer/constants/separation = 10
 Window/colors/title_color = Color(0.851, 0.635, 0.306, 1)
 Window/font_sizes/title_font_size = 20
 Window/fonts/title_font = SubResource("FontVariation_display_bold")
+
+; --- Label variations -------------------------------------------------------
+; Everything reading at one size is what makes a screen look like a spreadsheet.
+; Pick one of these per Label through Inspector -> Control -> Theme -> Type Variation.
+
+; The one thing on the screen that should be read first: a character's name,
+; a screen's title.
+TitleLabel/base_type = &"Label"
+TitleLabel/colors/font_color = Color(0.949, 0.898, 0.792, 1)
+TitleLabel/font_sizes/font_size = 36
+TitleLabel/fonts/font = SubResource("FontVariation_display_bold")
+
+; Names a group of rows below it — "Stats", "Equipment", "Record".
+SectionLabel/base_type = &"Label"
+SectionLabel/colors/font_color = Color(0.722, 0.525, 0.235, 1)
+SectionLabel/font_sizes/font_size = 16
+SectionLabel/fonts/font = SubResource("FontVariation_display_bold")
+
+; Detail that should stay legible without competing: battle counters, hints.
+MutedLabel/base_type = &"Label"
+MutedLabel/colors/font_color = Color(0.635, 0.584, 0.494, 1)
+MutedLabel/font_sizes/font_size = 16
+
+; A number worth noticing — a stat value, an XP total.
+ValueLabel/base_type = &"Label"
+ValueLabel/colors/font_color = Color(0.949, 0.898, 0.792, 1)
+ValueLabel/font_sizes/font_size = 21
+ValueLabel/fonts/font = ExtResource("2_body_bold")
+
+; The one call to action per screen. Larger, and gold rather than parchment.
+PrimaryButton/base_type = &"Button"
+PrimaryButton/colors/font_color = Color(0.973, 0.898, 0.741, 1)
+PrimaryButton/colors/font_hover_color = Color(1, 0.949, 0.851, 1)
+PrimaryButton/font_sizes/font_size = 26

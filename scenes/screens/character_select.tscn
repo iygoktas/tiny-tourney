@@ -26,6 +26,7 @@ grow_vertical = 2
 
 [node name="SlotList" type="ItemList" parent="VBoxContainer" unique_id=380135947]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=181869806]
 layout_mode = 2
