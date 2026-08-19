@@ -27,21 +27,33 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MusicCheckButton" type="CheckButton" parent="VBoxContainer" unique_id=1598868780]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="SfxCheckButton" type="CheckButton" parent="VBoxContainer" unique_id=1519762842]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="LanguageOptionButton" type="OptionButton" parent="VBoxContainer" unique_id=1097262669]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="SlotList" type="ItemList" parent="VBoxContainer" unique_id=524827897]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="DeleteSlotButton" type="Button" parent="VBoxContainer" unique_id=2080581673]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1521814660]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="DeleteConfirmDialog" type="ConfirmationDialog" parent="." unique_id=1072100430]

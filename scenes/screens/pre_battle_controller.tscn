@@ -124,4 +124,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="FightButton" type="Button" parent="VBoxContainer" unique_id=1764204609]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4

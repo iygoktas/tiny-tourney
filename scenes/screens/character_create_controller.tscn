@@ -31,10 +31,16 @@ layout_mode = 2
 alignment = 1
 
 [node name="RaceOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer" unique_id=117097477]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="NameLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=1947329609]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1129426616]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4

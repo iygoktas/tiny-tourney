@@ -36,4 +36,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=843291542]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4

@@ -111,6 +111,19 @@ texture_margin_top = 24.0
 texture_margin_right = 22.0
 texture_margin_bottom = 23.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_list_selected"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(0.722, 0.525, 0.235, 0.16)
+border_width_left = 3
+border_color = Color(0.851, 0.635, 0.306, 0.9)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel_slate_focus"]
 content_margin_left = 34.0
 content_margin_top = 30.0
@@ -145,19 +158,6 @@ texture_margin_right = 11.0
 texture_margin_bottom = 7.0
 modulate_color = Color(1.55, 1.15, 0.4, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_list_selected"]
-content_margin_left = 10.0
-content_margin_top = 6.0
-content_margin_right = 10.0
-content_margin_bottom = 6.0
-bg_color = Color(0.722, 0.525, 0.235, 0.16)
-border_width_left = 3
-border_color = Color(0.851, 0.635, 0.306, 0.9)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
 [resource]
 default_font = ExtResource("1_body")
 default_font_size = 19
@@ -179,7 +179,13 @@ Button/styles/normal = SubResource("StyleBoxTexture_button_normal")
 Button/styles/pressed = SubResource("StyleBoxTexture_button_pressed")
 CheckButton/colors/font_color = Color(0.91, 0.878, 0.816, 1)
 CheckButton/colors/font_hover_color = Color(1, 0.949, 0.851, 1)
+CheckButton/colors/font_pressed_color = Color(0.851, 0.635, 0.306, 1)
 CheckButton/font_sizes/font_size = 19
+CheckButton/styles/normal = SubResource("StyleBoxTexture_button_normal")
+CheckButton/styles/hover = SubResource("StyleBoxTexture_button_hover")
+CheckButton/styles/pressed = SubResource("StyleBoxTexture_button_pressed")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_button_pressed")
+CheckButton/styles/disabled = SubResource("StyleBoxTexture_button_disabled")
 HBoxContainer/constants/separation = 14
 IconSlot/base_type = &"PanelContainer"
 IconSlot/styles/panel = SubResource("StyleBoxTexture_slot")
