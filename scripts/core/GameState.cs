@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using Godot;
 using TinyTourney.Data;
+using TinyTourney.Progression;
 
 namespace TinyTourney.Core;
 
@@ -27,12 +29,50 @@ public partial class GameState : Node
 			CharacterName = characterName,
 			Level = 1,
 			CurrentXp = 0,
-			CurrentStats = RuntimeStatBlock.FromDesignStats(race.BaseStats),
-			EquippedWeaponId = null,
-			EquippedSpellId = null
+			CurrentStats = RuntimeStatBlock.FromDesignStats(race.BaseStats)
 		};
+
+		GrantStartingGear(Active);
+
 		ActiveSlotIndex = slotIndex;
 		SaveActive();
+	}
+
+	/// <summary>
+	/// Arms a brand new character with the entry-level weapon and spell.
+	/// Opponents are always generated holding both, so starting empty-handed left the
+	/// player unable to win a single fight — and unable to reach the level-up that would
+	/// have handed them their first weapon.
+	///
+	/// The items are picked from the content tables rather than named here, so rebalancing
+	/// which item is the starter is a data change.
+	/// </summary>
+	private static void GrantStartingGear(SaveSlotData save)
+	{
+		var starterWeapon = ContentRepository.AllWeapons
+			.Where(w => w.MinLevel <= 1)
+			.OrderBy(w => w.Tier)
+			.ThenBy(w => w.MinLevel)
+			.FirstOrDefault();
+
+		var starterSpell = ContentRepository.AllSpells
+			.Where(s => s.MinLevel <= 1)
+			.OrderBy(s => s.Tier)
+			.ThenBy(s => s.MinLevel)
+			.FirstOrDefault();
+
+		if (starterWeapon != null)
+		{
+			SaveSlotMutations.EquipWeapon(save, starterWeapon.Id);
+			// Marked as obtained so the level-up wheel never offers it a second time.
+			SaveSlotMutations.MarkWeaponObtained(save, starterWeapon.Id);
+		}
+
+		if (starterSpell != null)
+		{
+			SaveSlotMutations.EquipSpell(save, starterSpell.Id);
+			SaveSlotMutations.MarkSpellObtained(save, starterSpell.Id);
+		}
 	}
 
 	public void LoadSlot(int slotIndex)

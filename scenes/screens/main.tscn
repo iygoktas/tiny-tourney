@@ -26,9 +26,12 @@ TotalBattlesLabel = NodePath("MarginContainer/VBoxContainer/TotalBattlesLabel")
 FightButton = NodePath("MarginContainer/VBoxContainer/FightButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1896038411]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
@@ -36,6 +39,8 @@ theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1246689218]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="CharacterNameLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1959419741]
 layout_mode = 2

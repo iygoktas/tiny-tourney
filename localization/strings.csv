@@ -42,3 +42,9 @@ LABEL_WEAPON,Weapon,Silah
 LABEL_SPELL,Spell,Büyü
 LABEL_BATTLES_WON,Battles Won,Kazanılan Dövüş
 LABEL_TOTAL_BATTLES,Total Battles,Toplam Dövüş
+BTN_CONFIRM,Confirm,Onayla
+BTN_SPEED_1X,1x,1x
+BTN_SPEED_2X,2x,2x
+BTN_SPEED_4X,4x,4x
+BTN_SKIP,Skip,Atla
+BTN_SETTINGS,Settings,Ayarlar

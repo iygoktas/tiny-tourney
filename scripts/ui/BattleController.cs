@@ -68,6 +68,11 @@ public partial class BattleController : Control
 
 		_floatingText = new FloatingCombatText(this);
 
+		Speed1xButton.Text = Tr("BTN_SPEED_1X");
+		Speed2xButton.Text = Tr("BTN_SPEED_2X");
+		Speed4xButton.Text = Tr("BTN_SPEED_4X");
+		SkipButton.Text = Tr("BTN_SKIP");
+
 		Speed1xButton.Pressed += () => _speedMultiplier = 1f;
 		Speed2xButton.Pressed += () => _speedMultiplier = 2f;
 		Speed4xButton.Pressed += () => _speedMultiplier = 4f;

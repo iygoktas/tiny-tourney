@@ -20,6 +20,7 @@ public partial class CharacterCreateController : Control
 			RaceOptionButton.SetItemMetadata(RaceOptionButton.ItemCount - 1, race.Id);
 		}
 
+		ConfirmButton.Text = TranslationServer.Translate("BTN_CONFIRM");
 		ConfirmButton.Pressed += OnConfirmPressed;
 	}
 

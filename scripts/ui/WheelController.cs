@@ -11,6 +11,7 @@ public partial class WheelController : Control
 
 	public override void _Ready()
 	{
+		ContinueButton.Text = TranslationServer.Translate("BTN_CONTINUE");
 		ContinueButton.Pressed += OnContinuePressed;
 		ShowNextResult();
 	}

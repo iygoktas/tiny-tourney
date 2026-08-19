@@ -17,6 +17,13 @@ public partial class CharacterSelectController : Control
 
 	public override void _Ready()
 	{
+		// Button captions live here rather than in the scene so they follow the chosen language.
+		ContinueButton.Text = TranslationServer.Translate("BTN_CONTINUE");
+		NewCharacterButton.Text = TranslationServer.Translate("BTN_NEW_CHARACTER");
+		DeleteButton.Text = TranslationServer.Translate("BTN_DELETE");
+		DeleteConfirmDialog.Title = TranslationServer.Translate("CONFIRM_DELETE_TITLE");
+		DeleteConfirmDialog.DialogText = TranslationServer.Translate("CONFIRM_DELETE_TEXT");
+
 		SlotList.ItemSelected += OnSlotSelected;
 		ContinueButton.Pressed += OnContinuePressed;
 		NewCharacterButton.Pressed += OnNewCharacterPressed;

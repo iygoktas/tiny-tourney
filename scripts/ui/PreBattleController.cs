@@ -57,7 +57,9 @@ public partial class PreBattleController : Control
 		EnemySpellLabel.Text = enemy.EquippedSpell != null ? enemy.EquippedSpell.DisplayName : TranslationServer.Translate("ITEM_NONE");
 
 		BossLabel.Visible = BattleContext.IsBoss;
+		BossLabel.Text = TranslationServer.Translate("BOSS_LABEL");
 
+		FightButton.Text = TranslationServer.Translate("BTN_FIGHT");
 		FightButton.Pressed += OnFightPressed;
 	}
 

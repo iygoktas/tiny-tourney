@@ -18,6 +18,13 @@ public partial class SettingsController : Control
 
 	public override void _Ready()
 	{
+		MusicCheckButton.Text = TranslationServer.Translate("SETTINGS_MUSIC");
+		SfxCheckButton.Text = TranslationServer.Translate("SETTINGS_SFX");
+		DeleteSlotButton.Text = TranslationServer.Translate("BTN_DELETE");
+		BackButton.Text = TranslationServer.Translate("BTN_BACK");
+		DeleteConfirmDialog.Title = TranslationServer.Translate("CONFIRM_DELETE_TITLE");
+		DeleteConfirmDialog.DialogText = TranslationServer.Translate("CONFIRM_DELETE_TEXT");
+
 		MusicCheckButton.ButtonPressed = AudioSettingsManager.Instance.MusicEnabled;
 		SfxCheckButton.ButtonPressed = AudioSettingsManager.Instance.SfxEnabled;
 		MusicCheckButton.Toggled += enabled => AudioSettingsManager.Instance.SetMusicEnabled(enabled);
