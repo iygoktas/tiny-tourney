@@ -19,7 +19,7 @@ public partial class WheelController : Control
 	{
 		if (WheelContext.PendingResults.Count == 0)
 		{
-			GetTree().ChangeSceneToFile("res://scenes/screens/Main.tscn");
+			GetTree().ChangeSceneToFile("res://scenes/screens/main.tscn");
 			return;
 		}
 

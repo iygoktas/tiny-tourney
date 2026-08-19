@@ -48,6 +48,6 @@ public partial class CharacterCreateController : Control
 
 		string raceId = (string)RaceOptionButton.GetItemMetadata(RaceOptionButton.Selected);
 		GameState.Instance.NewCharacter(slotIndex, raceId, characterName);
-		GetTree().ChangeSceneToFile("res://scenes/screens/Main.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/screens/main.tscn");
 	}
 }

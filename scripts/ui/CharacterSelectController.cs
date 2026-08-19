@@ -71,12 +71,12 @@ public partial class CharacterSelectController : Control
 		}
 
 		GameState.Instance.LoadSlot(_selectedSlot);
-		GetTree().ChangeSceneToFile("res://scenes/screens/Main.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/screens/main.tscn");
 	}
 
 	private void OnNewCharacterPressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/screens/CharacterCreate.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/screens/character_create_controller.tscn");
 	}
 
 	private void OnDeletePressed()

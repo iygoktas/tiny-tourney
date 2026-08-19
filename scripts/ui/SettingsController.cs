@@ -42,7 +42,7 @@ public partial class SettingsController : Control
 		DeleteSlotButton.Pressed += OnDeleteSlotPressed;
 		DeleteConfirmDialog.Confirmed += OnDeleteConfirmed;
 
-		BackButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/screens/Main.tscn");
+		BackButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/screens/main.tscn");
 
 		RefreshSlotList();
 	}

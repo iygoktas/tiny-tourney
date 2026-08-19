@@ -48,7 +48,7 @@ public static class EnemyFactory
 
         string name = isBoss ? $"{race.DisplayName} Boss" : race.DisplayName;
 
-        return (new CombatantState(name, stats, weapon, spell), isBoss);
+        return (new CombatantState(name, stats, weapon, spell) { Race = race }, isBoss);
     }
 
     public static void RunSelfTest()

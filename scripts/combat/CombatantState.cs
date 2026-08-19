@@ -12,6 +12,9 @@ public class CombatantState
     public string Name { get; }
     public RuntimeStatBlock Stats { get; }
 
+    /// <summary>Which race this combatant is, so the battle screen knows which sprite to show.</summary>
+    public RaceData Race { get; set; }
+
     public int MaxHp { get; }
     public int CurrentHp { get; set; }
     public int MaxMana { get; }

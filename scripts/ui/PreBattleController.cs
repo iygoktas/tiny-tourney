@@ -63,6 +63,6 @@ public partial class PreBattleController : Control
 
 	private void OnFightPressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/screens/Battle.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/screens/battle_controller.tscn");
 	}
 }

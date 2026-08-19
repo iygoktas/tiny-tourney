@@ -75,13 +75,16 @@ public partial class MainController : Control
 		var weapon = save.EquippedWeaponId != null ? ContentRepository.GetWeaponById(save.EquippedWeaponId) : null;
 		var spell = save.EquippedSpellId != null ? ContentRepository.GetSpellById(save.EquippedSpellId) : null;
 
-		var player = new CombatantState(save.CharacterName, save.CurrentStats, weapon, spell);
+		var player = new CombatantState(save.CharacterName, save.CurrentStats, weapon, spell)
+		{
+			Race = ContentRepository.GetRaceById(save.RaceId)
+		};
 		var (enemy, isBoss) = EnemyFactory.CreateEnemy(save);
 
 		BattleContext.PlayerState = player;
 		BattleContext.EnemyState = enemy;
 		BattleContext.IsBoss = isBoss;
 
-		GetTree().ChangeSceneToFile("res://scenes/screens/PreBattle.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/screens/pre_battle_controller.tscn");
 	}
 }

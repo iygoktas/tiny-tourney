@@ -21,6 +21,6 @@ public partial class StatisticsController : Control
         HighestLevelLabel.Text = stats.HighestLevelReached.ToString();
         TotalBattlesLabel.Text = stats.TotalBattlesPlayed.ToString();
 
-        BackButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/screens/Main.tscn");
+        BackButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/screens/main.tscn");
     }
 }
