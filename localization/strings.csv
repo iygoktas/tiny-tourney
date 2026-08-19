@@ -36,3 +36,9 @@ LANG_TR,Turkish,Türkçe
 STAT_HP,HP,Can
 ITEM_NONE,None,Yok
 BOSS_LABEL,BOSS,BOSS
+LABEL_LEVEL,Level,Seviye
+LABEL_XP,XP,TP
+LABEL_WEAPON,Weapon,Silah
+LABEL_SPELL,Spell,Büyü
+LABEL_BATTLES_WON,Battles Won,Kazanılan Dövüş
+LABEL_TOTAL_BATTLES,Total Battles,Toplam Dövüş

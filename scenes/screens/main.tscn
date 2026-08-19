@@ -10,87 +10,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_10bai")
-CharacterNameLabel = NodePath("CharacterNameLabel")
-LevelLabel = NodePath("LevelLabel")
-XpLabel = NodePath("XpLabel")
-StrLabel = NodePath("StrLabel")
-SpdLabel = NodePath("SpdLabel")
-DurLabel = NodePath("DurLabel")
-DexLabel = NodePath("DexLabel")
-LukLabel = NodePath("LukLabel")
-IntLabel = NodePath("IntLabel")
-EquippedWeaponLabel = NodePath("EquippedWeaponLabel")
-EquippedSpellLabel = NodePath("EquippedSpellLabel")
-BattlesWonLabel = NodePath("BattlesWonLabel")
-TotalBattlesLabel = NodePath("TotalBattlesLabel")
-FightButton = NodePath("FightButton")
+CharacterNameLabel = NodePath("MarginContainer/VBoxContainer/CharacterNameLabel")
+LevelLabel = NodePath("MarginContainer/VBoxContainer/LevelLabel")
+XpLabel = NodePath("MarginContainer/VBoxContainer/XpLabel")
+StrLabel = NodePath("MarginContainer/VBoxContainer/StrLabel")
+SpdLabel = NodePath("MarginContainer/VBoxContainer/SpdLabel")
+DurLabel = NodePath("MarginContainer/VBoxContainer/DurLabel")
+DexLabel = NodePath("MarginContainer/VBoxContainer/DexLabel")
+LukLabel = NodePath("MarginContainer/VBoxContainer/LukLabel")
+IntLabel = NodePath("MarginContainer/VBoxContainer/IntLabel")
+EquippedWeaponLabel = NodePath("MarginContainer/VBoxContainer/EquippedWeaponLabel")
+EquippedSpellLabel = NodePath("MarginContainer/VBoxContainer/EquippedSpellLabel")
+BattlesWonLabel = NodePath("MarginContainer/VBoxContainer/BattlesWonLabel")
+TotalBattlesLabel = NodePath("MarginContainer/VBoxContainer/TotalBattlesLabel")
+FightButton = NodePath("MarginContainer/VBoxContainer/FightButton")
 
-[node name="CharacterNameLabel" type="Label" parent="." unique_id=1959419741]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1896038411]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="LevelLabel" type="Label" parent="." unique_id=1258327463]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1246689218]
+layout_mode = 2
 
-[node name="XpLabel" type="Label" parent="." unique_id=1259178194]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="CharacterNameLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1959419741]
+layout_mode = 2
 
-[node name="StrLabel" type="Label" parent="." unique_id=1974411148]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1258327463]
+layout_mode = 2
 
-[node name="SpdLabel" type="Label" parent="." unique_id=373410237]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="XpLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1259178194]
+layout_mode = 2
 
-[node name="DurLabel" type="Label" parent="." unique_id=969608850]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="StrLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1974411148]
+layout_mode = 2
 
-[node name="DexLabel" type="Label" parent="." unique_id=1603900851]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="SpdLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=373410237]
+layout_mode = 2
 
-[node name="LukLabel" type="Label" parent="." unique_id=821714698]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="DurLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=969608850]
+layout_mode = 2
 
-[node name="IntLabel" type="Label" parent="." unique_id=1272692960]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="DexLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1603900851]
+layout_mode = 2
 
-[node name="EquippedWeaponLabel" type="Label" parent="." unique_id=1735924593]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="LukLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=821714698]
+layout_mode = 2
 
-[node name="EquippedSpellLabel" type="Label" parent="." unique_id=978460405]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="IntLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1272692960]
+layout_mode = 2
 
-[node name="BattlesWonLabel" type="Label" parent="." unique_id=574569105]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="EquippedWeaponLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1735924593]
+layout_mode = 2
 
-[node name="TotalBattlesLabel" type="Label" parent="." unique_id=1033989876]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="EquippedSpellLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=978460405]
+layout_mode = 2
 
-[node name="FightButton" type="Button" parent="." unique_id=689994688]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="BattlesWonLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=574569105]
+layout_mode = 2
+
+[node name="TotalBattlesLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1033989876]
+layout_mode = 2
+
+[node name="FightButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=689994688]
+layout_mode = 2

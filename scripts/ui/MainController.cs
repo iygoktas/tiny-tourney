@@ -37,18 +37,28 @@ public partial class MainController : Control
 		var stats = save.CurrentStats;
 
 		CharacterNameLabel.Text = save.CharacterName;
-		LevelLabel.Text = save.Level.ToString();
-		XpLabel.Text = $"{save.CurrentXp}/{XpCurve.XpRequiredForLevel(save.Level)}";
+		LevelLabel.Text = $"{TranslationServer.Translate("LABEL_LEVEL")}: {save.Level}";
+		XpLabel.Text = $"{TranslationServer.Translate("LABEL_XP")}: {save.CurrentXp}/{XpCurve.XpRequiredForLevel(save.Level)}";
 		StrLabel.Text = $"{TranslationServer.Translate("STAT_STR")}: {stats.Str}";
 		SpdLabel.Text = $"{TranslationServer.Translate("STAT_SPD")}: {stats.Spd}";
 		DurLabel.Text = $"{TranslationServer.Translate("STAT_DUR")}: {stats.Dur}";
 		DexLabel.Text = $"{TranslationServer.Translate("STAT_DEX")}: {stats.Dex}";
 		LukLabel.Text = $"{TranslationServer.Translate("STAT_LUK")}: {stats.Luk}";
 		IntLabel.Text = $"{TranslationServer.Translate("STAT_INT")}: {stats.Int}";
-		EquippedWeaponLabel.Text = save.EquippedWeaponId != null ? ContentRepository.GetWeaponById(save.EquippedWeaponId).DisplayName : TranslationServer.Translate("ITEM_NONE");
-		EquippedSpellLabel.Text = save.EquippedSpellId != null ? ContentRepository.GetSpellById(save.EquippedSpellId).DisplayName : TranslationServer.Translate("ITEM_NONE");
-		BattlesWonLabel.Text = save.Statistics.BattlesWon.ToString();
-		TotalBattlesLabel.Text = save.Statistics.TotalBattlesPlayed.ToString();
+		string weaponName = save.EquippedWeaponId != null
+			? ContentRepository.GetWeaponById(save.EquippedWeaponId).DisplayName
+			: TranslationServer.Translate("ITEM_NONE");
+		string spellName = save.EquippedSpellId != null
+			? ContentRepository.GetSpellById(save.EquippedSpellId).DisplayName
+			: TranslationServer.Translate("ITEM_NONE");
+
+		EquippedWeaponLabel.Text = $"{TranslationServer.Translate("LABEL_WEAPON")}: {weaponName}";
+		EquippedSpellLabel.Text = $"{TranslationServer.Translate("LABEL_SPELL")}: {spellName}";
+		BattlesWonLabel.Text = $"{TranslationServer.Translate("LABEL_BATTLES_WON")}: {save.Statistics.BattlesWon}";
+		TotalBattlesLabel.Text = $"{TranslationServer.Translate("LABEL_TOTAL_BATTLES")}: {save.Statistics.TotalBattlesPlayed}";
+
+		// Owned by the script rather than the scene, so the label follows the chosen language.
+		FightButton.Text = TranslationServer.Translate("BTN_FIGHT");
 	}
 
 	public List<(WeaponData Data, bool Unlocked)> GetWeaponMenu()

@@ -10,21 +10,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bp2c3")
-CategoryLabel = NodePath("CategoryLabel")
-ResultLabel = NodePath("ResultLabel")
-ContinueButton = NodePath("ContinueButton")
+CategoryLabel = NodePath("MarginContainer/VBoxContainer/CategoryLabel")
+ResultLabel = NodePath("MarginContainer/VBoxContainer/ResultLabel")
+ContinueButton = NodePath("MarginContainer/VBoxContainer/ContinueButton")
 
-[node name="CategoryLabel" type="Label" parent="." unique_id=1064078634]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1407223089]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="ResultLabel" type="Label" parent="." unique_id=1263752921]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1774405393]
+layout_mode = 2
 
-[node name="ContinueButton" type="Button" parent="." unique_id=843291542]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="CategoryLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1064078634]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1263752921]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=843291542]
+layout_mode = 2
