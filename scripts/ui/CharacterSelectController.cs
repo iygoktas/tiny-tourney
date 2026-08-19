@@ -58,7 +58,31 @@ public partial class CharacterSelectController : Control
 		_selectedSlotUsed = false;
 		ContinueButton.Disabled = true;
 		DeleteButton.Disabled = true;
-		NewCharacterButton.Disabled = SaveManager.ListUsedSlots().Count >= SaveManager.MaxSlots;
+
+		bool slotsFull = SaveManager.ListUsedSlots().Count >= SaveManager.MaxSlots;
+		NewCharacterButton.Disabled = slotsFull;
+		// Without this the button just sits there greyed out with no explanation.
+		NewCharacterButton.TooltipText = slotsFull
+			? TranslationServer.Translate("SLOTS_FULL_HINT")
+			: string.Empty;
+
+		// Land on the first character the player actually has, so Continue and Delete are
+		// usable straight away instead of waiting on a selection in the list.
+		SelectFirstUsedSlot();
+	}
+
+	private void SelectFirstUsedSlot()
+	{
+		for (int i = 0; i < SlotList.ItemCount; i++)
+		{
+			int slotIndex = (int)SlotList.GetItemMetadata(i);
+			if (SaveManager.SlotExists(slotIndex))
+			{
+				SlotList.Select(i);
+				OnSlotSelected(i);
+				return;
+			}
+		}
 	}
 
 	private void OnSlotSelected(long index)

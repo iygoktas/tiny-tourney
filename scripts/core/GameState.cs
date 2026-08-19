@@ -16,7 +16,10 @@ public partial class GameState : Node
 	public override void _Ready()
 	{
 		Instance = this;
-		RunSelfTest();
+
+		// RunSelfTest() is NOT called here on purpose. It writes a "Test Hero" character
+		// into slot 0, so running it on every launch quietly destroyed whatever the player
+		// had saved there and left them one slot short. Call it by hand when debugging.
 	}
 
 	public void NewCharacter(int slotIndex, string raceId, string characterName)

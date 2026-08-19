@@ -25,10 +25,22 @@ public partial class MainController : Control
 	[Export] public Label TotalBattlesLabel;
 	[Export] public Button FightButton;
 
+	/// <summary>
+	/// Opens the settings screen. Optional: leave it unassigned and the main screen simply
+	/// has no way through to settings, rather than failing to load.
+	/// </summary>
+	[Export] public Button SettingsButton;
+
 	public override void _Ready()
 	{
 		RefreshLabels();
 		FightButton.Pressed += OnFightPressed;
+
+		if (SettingsButton != null)
+		{
+			SettingsButton.Text = TranslationServer.Translate("BTN_SETTINGS");
+			SettingsButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/screens/settings.tscn");
+		}
 	}
 
 	private void RefreshLabels()

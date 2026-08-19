@@ -10,26 +10,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e3xn8")
-PlayerNameLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerNameLabel")
-PlayerHpLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerHpLabel")
-PlayerStrLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerStrLabel")
-PlayerSpdLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerSpdLabel")
-PlayerDurLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerDurLabel")
-PlayerDexLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerDexLabel")
-PlayerLukLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerLukLabel")
-PlayerIntLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerIntLabel")
-PlayerWeaponLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerWeaponLabel")
-PlayerSpellLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/PlayerSpellLabel")
-EnemyNameLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemyNameLabel")
-EnemyHpLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemyHpLabel")
-EnemyStrLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemyStrLabel")
-EnemySpdLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemySpdLabel")
-EnemyDurLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemyDurLabel")
-EnemyDexLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemyDexLabel")
-EnemyLukLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemyLukLabel")
-EnemyIntLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemyIntLabel")
-EnemyWeaponLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemyWeaponLabel")
-EnemySpellLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/EnemySpellLabel")
+PlayerNameLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerNameLabel")
+PlayerHpLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerHpLabel")
+PlayerStrLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerStrLabel")
+PlayerSpdLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerSpdLabel")
+PlayerDurLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerDurLabel")
+PlayerDexLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerDexLabel")
+PlayerLukLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerLukLabel")
+PlayerIntLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerIntLabel")
+PlayerWeaponLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerWeaponLabel")
+PlayerSpellLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/PlayerSpellLabel")
+EnemyNameLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemyNameLabel")
+EnemyHpLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemyHpLabel")
+EnemyStrLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemyStrLabel")
+EnemySpdLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemySpdLabel")
+EnemyDurLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemyDurLabel")
+EnemyDexLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemyDexLabel")
+EnemyLukLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemyLukLabel")
+EnemyIntLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemyIntLabel")
+EnemyWeaponLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemyWeaponLabel")
+EnemySpellLabel = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2/EnemySpellLabel")
 BossLabel = NodePath("VBoxContainer/BossLabel")
 FightButton = NodePath("VBoxContainer/FightButton")
 
@@ -43,74 +43,81 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=181865440]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1152570815]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=121510894]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer" unique_id=1152570815]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1993700219]
+[node name="PlayerNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1993700219]
 layout_mode = 2
 
-[node name="PlayerHpLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=553633460]
+[node name="PlayerHpLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=553633460]
 layout_mode = 2
 
-[node name="PlayerStrLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1773142963]
+[node name="PlayerStrLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1773142963]
 layout_mode = 2
 
-[node name="PlayerSpdLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=589168332]
+[node name="PlayerSpdLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=589168332]
 layout_mode = 2
 
-[node name="PlayerDurLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1554013134]
+[node name="PlayerDurLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1554013134]
 layout_mode = 2
 
-[node name="PlayerDexLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1257671503]
+[node name="PlayerDexLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1257671503]
 layout_mode = 2
 
-[node name="PlayerLukLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1341236912]
+[node name="PlayerLukLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1341236912]
 layout_mode = 2
 
-[node name="PlayerIntLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=47046763]
+[node name="PlayerIntLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=47046763]
 layout_mode = 2
 
-[node name="PlayerWeaponLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1410237025]
+[node name="PlayerWeaponLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1410237025]
 layout_mode = 2
 
-[node name="PlayerSpellLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=318148590]
+[node name="PlayerSpellLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=318148590]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1293438395]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=255346552]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer2" unique_id=1293438395]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EnemyNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=319066602]
+[node name="EnemyNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=319066602]
 layout_mode = 2
 
-[node name="EnemyHpLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1762175172]
+[node name="EnemyHpLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=1762175172]
 layout_mode = 2
 
-[node name="EnemyStrLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1047346481]
+[node name="EnemyStrLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=1047346481]
 layout_mode = 2
 
-[node name="EnemySpdLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=717367906]
+[node name="EnemySpdLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=717367906]
 layout_mode = 2
 
-[node name="EnemyDurLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1713704571]
+[node name="EnemyDurLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=1713704571]
 layout_mode = 2
 
-[node name="EnemyDexLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=965969159]
+[node name="EnemyDexLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=965969159]
 layout_mode = 2
 
-[node name="EnemyLukLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=271306448]
+[node name="EnemyLukLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=271306448]
 layout_mode = 2
 
-[node name="EnemyIntLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2029759628]
+[node name="EnemyIntLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=2029759628]
 layout_mode = 2
 
-[node name="EnemyWeaponLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1019794790]
+[node name="EnemyWeaponLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=1019794790]
 layout_mode = 2
 
-[node name="EnemySpellLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=430098392]
+[node name="EnemySpellLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer2" unique_id=430098392]
 layout_mode = 2
 
 [node name="BossLabel" type="Label" parent="VBoxContainer" unique_id=1588288775]
