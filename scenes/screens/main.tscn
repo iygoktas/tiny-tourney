@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmrb7jmiwtxec" path="res://scripts/ui/MainController.cs" id="1_10bai"]
 
-[node name="Main" type="Control" unique_id=1014004067 node_paths=PackedStringArray("CharacterNameLabel", "LevelLabel", "XpLabel", "StrLabel", "SpdLabel", "DurLabel", "DexLabel", "LukLabel", "IntLabel", "EquippedWeaponLabel", "EquippedSpellLabel", "BattlesWonLabel", "TotalBattlesLabel", "FightButton", "SettingsButton")]
+[node name="Main" type="Control" unique_id=1014004067 node_paths=PackedStringArray("CharacterNameLabel", "LevelLabel", "XpLabel", "StrLabel", "SpdLabel", "DurLabel", "DexLabel", "LukLabel", "IntLabel", "EquippedWeaponLabel", "EquippedSpellLabel", "BattlesWonLabel", "TotalBattlesLabel", "FightButton", "SettingsButton", "CharacterPortrait", "RaceLabel", "XpBar", "AttributesHeaderLabel", "EquipmentHeaderLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,84 +10,154 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_10bai")
-CharacterNameLabel = NodePath("MarginContainer/VBoxContainer/CharacterNameLabel")
-LevelLabel = NodePath("MarginContainer/VBoxContainer/LevelLabel")
-XpLabel = NodePath("MarginContainer/VBoxContainer/XpLabel")
-StrLabel = NodePath("MarginContainer/VBoxContainer/StrLabel")
-SpdLabel = NodePath("MarginContainer/VBoxContainer/SpdLabel")
-DurLabel = NodePath("MarginContainer/VBoxContainer/DurLabel")
-DexLabel = NodePath("MarginContainer/VBoxContainer/DexLabel")
-LukLabel = NodePath("MarginContainer/VBoxContainer/LukLabel")
-IntLabel = NodePath("MarginContainer/VBoxContainer/IntLabel")
-EquippedWeaponLabel = NodePath("MarginContainer/VBoxContainer/EquippedWeaponLabel")
-EquippedSpellLabel = NodePath("MarginContainer/VBoxContainer/EquippedSpellLabel")
-BattlesWonLabel = NodePath("MarginContainer/VBoxContainer/BattlesWonLabel")
-TotalBattlesLabel = NodePath("MarginContainer/VBoxContainer/TotalBattlesLabel")
-FightButton = NodePath("MarginContainer/VBoxContainer/FightButton")
-SettingsButton = NodePath("MarginContainer/VBoxContainer/SettingsButton")
+CharacterNameLabel = NodePath("CenterContainer/VBoxContainer/TopLine/NameRace/CharacterNameLabel")
+LevelLabel = NodePath("CenterContainer/VBoxContainer/TopLine/LevelLabel")
+XpLabel = NodePath("CenterContainer/VBoxContainer/XpLabel")
+StrLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/StrLabel")
+SpdLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/SpdLabel")
+DurLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/DurLabel")
+DexLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/DexLabel")
+LukLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/LukLabel")
+IntLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/IntLabel")
+EquippedWeaponLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquippedWeaponLabel")
+EquippedSpellLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquippedSpellLabel")
+BattlesWonLabel = NodePath("CenterContainer/VBoxContainer/Record/BattlesWonLabel")
+TotalBattlesLabel = NodePath("CenterContainer/VBoxContainer/Record/TotalBattlesLabel")
+FightButton = NodePath("CenterContainer/VBoxContainer/FightButton")
+SettingsButton = NodePath("CenterContainer/VBoxContainer/SettingsButton")
+CharacterPortrait = NodePath("CenterContainer/VBoxContainer/Body/CharacterPortrait")
+RaceLabel = NodePath("CenterContainer/VBoxContainer/TopLine/NameRace/CharacterNameLabel")
+XpBar = NodePath("CenterContainer/VBoxContainer/XpBar")
+AttributesHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesHeaderLabel")
+EquipmentHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquipmentHeaderLabel")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1896038411]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1252663196]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1246689218]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1246689218]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="CharacterNameLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1959419741]
+[node name="TopLine" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1663457911]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="NameRace" type="VBoxContainer" parent="CenterContainer/VBoxContainer/TopLine" unique_id=263355583]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="CharacterNameLabel" type="Label" parent="CenterContainer/VBoxContainer/TopLine/NameRace" unique_id=1959419741]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+
+[node name="LevelLabel" type="Label" parent="CenterContainer/VBoxContainer/TopLine" unique_id=1258327463]
+layout_mode = 2
+theme_type_variation = &"ValueLabel"
+
+[node name="XpBar" type="ProgressBar" parent="CenterContainer/VBoxContainer" unique_id=376407718]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_type_variation = &"XpBar"
+show_percentage = false
+
+[node name="XpLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1259178194]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+horizontal_alignment = 1
+
+[node name="Body" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1807851622]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CharacterPortrait" type="TextureRect" parent="CenterContainer/VBoxContainer/Body" unique_id=2105983658]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="SidePanels" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body" unique_id=2003877124]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AttributesPanel" type="PanelContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels" unique_id=746531129]
 layout_mode = 2
 
-[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1258327463]
+[node name="AttributesBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel" unique_id=1295397470]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AttributesHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox" unique_id=1417750566]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+
+[node name="AttributesGrid" type="GridContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox" unique_id=1702723163]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="StrLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid" unique_id=1974411148]
 layout_mode = 2
 
-[node name="XpLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1259178194]
+[node name="SpdLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid" unique_id=373410237]
 layout_mode = 2
 
-[node name="StrLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1974411148]
+[node name="DurLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid" unique_id=969608850]
 layout_mode = 2
 
-[node name="SpdLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=373410237]
+[node name="DexLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid" unique_id=1603900851]
 layout_mode = 2
 
-[node name="DurLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=969608850]
+[node name="LukLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid" unique_id=821714698]
 layout_mode = 2
 
-[node name="DexLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1603900851]
+[node name="IntLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid" unique_id=1272692960]
 layout_mode = 2
 
-[node name="LukLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=821714698]
+[node name="EquipmentPanel" type="PanelContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels" unique_id=443688984]
 layout_mode = 2
 
-[node name="IntLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1272692960]
+[node name="EquipmentBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel" unique_id=415845228]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EquipmentHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=1553821559]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+
+[node name="EquippedWeaponLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=1735924593]
 layout_mode = 2
 
-[node name="EquippedWeaponLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1735924593]
+[node name="EquippedSpellLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=978460405]
 layout_mode = 2
 
-[node name="EquippedSpellLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=978460405]
+[node name="FightButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=689994688]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"PrimaryButton"
 
-[node name="BattlesWonLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=574569105]
-layout_mode = 2
-
-[node name="TotalBattlesLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1033989876]
-layout_mode = 2
-
-[node name="FightButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=689994688]
+[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=503713163]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=503713163]
-custom_minimum_size = Vector2(280, 0)
+[node name="Record" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=666468655]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BattlesWonLabel" type="Label" parent="CenterContainer/VBoxContainer/Record" unique_id=574569105]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+
+[node name="TotalBattlesLabel" type="Label" parent="CenterContainer/VBoxContainer/Record" unique_id=1033989876]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
