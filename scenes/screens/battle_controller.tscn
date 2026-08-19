@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://c8e1kj8w7hwit"]
 
 [ext_resource type="Script" uid="uid://csrfplgm05q5a" path="res://scripts/ui/BattleController.cs" id="1_xptte"]
+[ext_resource type="Script" uid="uid://ie5mjpb67lvs" path="res://scripts/ui/FighterView.cs" id="2_evftj"]
 
-[node name="BattleController" type="Control" unique_id=1723977962 node_paths=PackedStringArray("PlayerHpBar", "EnemyHpBar", "LogLabel", "Speed1xButton", "Speed2xButton", "Speed4xButton", "SkipButton")]
+[node name="BattleController" type="Control" unique_id=1723977962 node_paths=PackedStringArray("PlayerHpBar", "EnemyHpBar", "LogLabel", "Speed1xButton", "Speed2xButton", "Speed4xButton", "SkipButton", "PlayerFighter", "EnemyFighter")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,45 +11,76 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xptte")
-PlayerHpBar = NodePath("PlayerHpBar")
-EnemyHpBar = NodePath("EnemyHpBar")
-LogLabel = NodePath("LogLabel")
-Speed1xButton = NodePath("Speed1x")
-Speed2xButton = NodePath("Speed2x")
-Speed4xButton = NodePath("Speed4x")
-SkipButton = NodePath("SkipButton")
+PlayerHpBar = NodePath("Layout/TopBars/PlayerHpBar")
+EnemyHpBar = NodePath("Layout/TopBars/EnemyHpBar")
+LogLabel = NodePath("Layout/LogLabel")
+Speed1xButton = NodePath("Layout/SpeedControls/1x")
+Speed2xButton = NodePath("Layout/SpeedControls/2x")
+Speed4xButton = NodePath("Layout/SpeedControls/4x")
+SkipButton = NodePath("Layout/SpeedControls/Skip")
+PlayerFighter = NodePath("Layout/Arena/PlayerFighter")
+EnemyFighter = NodePath("Layout/Arena/EnemyFighter")
 
-[node name="PlayerHpBar" type="ProgressBar" parent="." unique_id=515739432]
-layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1141104447]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
 
-[node name="EnemyHpBar" type="ProgressBar" parent="." unique_id=2105014261]
-layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="TopBars" type="HBoxContainer" parent="Layout" unique_id=1504649227]
+layout_mode = 2
 
-[node name="LogLabel" type="RichTextLabel" parent="." unique_id=592084829]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PlayerHpBar" type="ProgressBar" parent="Layout/TopBars" unique_id=515739432]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Speed1x" type="Button" parent="." unique_id=2118571961]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="EnemyHpBar" type="ProgressBar" parent="Layout/TopBars" unique_id=2105014261]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Speed2x" type="Button" parent="." unique_id=608397155]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Arena" type="Control" parent="Layout" unique_id=1844162491]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Speed4x" type="Button" parent="." unique_id=1803910820]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="PlayerFighter" type="TextureRect" parent="Layout/Arena" unique_id=1698310910]
+layout_mode = 1
+offset_left = 200.0
+offset_top = 150.0
+offset_right = 328.0
+offset_bottom = 278.0
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_evftj")
 
-[node name="SkipButton" type="Button" parent="." unique_id=1647007465]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="EnemyFighter" type="TextureRect" parent="Layout/Arena" unique_id=718318102]
+layout_mode = 1
+offset_left = 820.0
+offset_top = 150.0
+offset_right = 948.0
+offset_bottom = 278.0
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_evftj")
+
+[node name="LogLabel" type="RichTextLabel" parent="Layout" unique_id=592084829]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+
+[node name="SpeedControls" type="HBoxContainer" parent="Layout" unique_id=1139848927]
+layout_mode = 2
+
+[node name="1x" type="Button" parent="Layout/SpeedControls" unique_id=2118571961]
+layout_mode = 2
+
+[node name="2x" type="Button" parent="Layout/SpeedControls" unique_id=608397155]
+layout_mode = 2
+
+[node name="4x" type="Button" parent="Layout/SpeedControls" unique_id=1803910820]
+layout_mode = 2
+
+[node name="Skip" type="Button" parent="Layout/SpeedControls" unique_id=1647007465]
+layout_mode = 2
