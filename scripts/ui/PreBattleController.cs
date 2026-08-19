@@ -29,10 +29,19 @@ public partial class PreBattleController : Control
 	[Export] public Label BossLabel;
 	[Export] public Button FightButton;
 
+	// Optional: the two fighters' sprites, so the matchup shows who is actually
+	// meeting whom instead of two columns of numbers (DESIGN.md §11). Leave either
+	// unassigned and the screen simply loads without that portrait.
+	[Export] public TextureRect PlayerPortrait;
+	[Export] public TextureRect EnemyPortrait;
+
 	public override void _Ready()
 	{
 		var player = BattleContext.PlayerState;
 		var enemy = BattleContext.EnemyState;
+
+		ShowPortrait(PlayerPortrait, player, facesRight: true);
+		ShowPortrait(EnemyPortrait, enemy, facesRight: false);
 
 		PlayerNameLabel.Text = player.Name;
 		PlayerHpLabel.Text = $"{TranslationServer.Translate("STAT_HP")}: {player.MaxHp}";
@@ -61,6 +70,28 @@ public partial class PreBattleController : Control
 
 		FightButton.Text = TranslationServer.Translate("BTN_FIGHT");
 		FightButton.Pressed += OnFightPressed;
+	}
+
+	private static void ShowPortrait(TextureRect portrait, TinyTourney.Combat.CombatantState state, bool facesRight)
+	{
+		if (portrait == null)
+		{
+			return;
+		}
+
+		portrait.TextureFilter = CanvasItem.TextureFilterEnum.Nearest;
+		portrait.FlipH = !facesRight;
+
+		var race = state?.Race;
+		if (race?.ReferenceImagePath is { Length: > 0 } path && ResourceLoader.Exists(path))
+		{
+			portrait.Texture = GD.Load<Texture2D>(path);
+		}
+		else
+		{
+			portrait.Texture = null;
+			GD.PushWarning($"[PreBattleController] No portrait for race '{race?.Id ?? "null"}'.");
+		}
 	}
 
 	private void OnFightPressed()

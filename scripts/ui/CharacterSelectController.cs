@@ -49,6 +49,9 @@ public partial class CharacterSelectController : Control
 			else
 			{
 				SlotList.AddItem(TranslationServer.Translate("SLOT_EMPTY"));
+				// An empty slot is a fact, not a choice — dim it so the real
+				// characters carry the visual weight in the list.
+				SlotList.SetItemCustomFgColor(SlotList.ItemCount - 1, new Color(0.55f, 0.51f, 0.44f, 0.55f));
 			}
 
 			SlotList.SetItemMetadata(SlotList.ItemCount - 1, i);

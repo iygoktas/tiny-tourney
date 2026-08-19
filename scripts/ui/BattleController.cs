@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Godot;
 using TinyTourney.Combat;
 using TinyTourney.Core;
+using TinyTourney.Data;
 using TinyTourney.Progression;
 
 namespace TinyTourney.UI;
@@ -49,6 +50,11 @@ public partial class BattleController : Control
 	private int _playerHp;
 	private int _enemyHp;
 
+	// Created in code and centred inside each bar: "Name  106/141". A percentage says
+	// far less in a fight than the real numbers do.
+	private Label _playerBarLabel;
+	private Label _enemyBarLabel;
+
 	public override void _Ready()
 	{
 		_player = BattleContext.PlayerState;
@@ -62,6 +68,12 @@ public partial class BattleController : Control
 		EnemyHpBar.MaxValue = _enemy.MaxHp;
 		PlayerHpBar.Value = _player.MaxHp;
 		EnemyHpBar.Value = _enemy.MaxHp;
+
+		PlayerHpBar.ShowPercentage = false;
+		EnemyHpBar.ShowPercentage = false;
+		_playerBarLabel = CreateBarLabel(PlayerHpBar);
+		_enemyBarLabel = CreateBarLabel(EnemyHpBar);
+		UpdateBarLabels();
 
 		PlayerFighter?.Setup(_player.Race, facesRight: true);
 		EnemyFighter?.Setup(_enemy.Race, facesRight: false);
@@ -86,6 +98,13 @@ public partial class BattleController : Control
 	{
 		foreach (var evt in _events)
 		{
+			// Bookkeeping events with nothing to show: spending the beat delay on them
+			// just makes the fight feel slower.
+			if (evt.EventType is CombatEventType.SpellCast or CombatEventType.SpellFallbackToWeapon)
+			{
+				continue;
+			}
+
 			ApplyEventToLog(evt);
 
 			if (_skipRequested)
@@ -103,8 +122,31 @@ public partial class BattleController : Control
 		// The skip path fast-forwarded past every animation, so settle the bars on the truth.
 		PlayerHpBar.Value = _playerHp;
 		EnemyHpBar.Value = _enemyHp;
+		UpdateBarLabels();
 
 		OnBattleComplete();
+	}
+
+	private Label CreateBarLabel(ProgressBar bar)
+	{
+		var label = new Label
+		{
+			MouseFilter = MouseFilterEnum.Ignore,
+			HorizontalAlignment = HorizontalAlignment.Center,
+			VerticalAlignment = VerticalAlignment.Center
+		};
+		label.AddThemeFontSizeOverride("font_size", 15);
+		label.AddThemeConstantOverride("outline_size", 5);
+		label.AddThemeColorOverride("font_outline_color", new Color(0f, 0f, 0f, 0.85f));
+		label.SetAnchorsPreset(LayoutPreset.FullRect);
+		bar.AddChild(label);
+		return label;
+	}
+
+	private void UpdateBarLabels()
+	{
+		_playerBarLabel.Text = $"{_player.Name}   {_playerHp}/{_player.MaxHp}";
+		_enemyBarLabel.Text = $"{_enemy.Name}   {_enemyHp}/{_enemy.MaxHp}";
 	}
 
 	/// <summary>
@@ -124,6 +166,7 @@ public partial class BattleController : Control
 		ApplyEventToHp(evt);
 		ShowEventText(evt);
 		AnimateHpBars();
+		UpdateBarLabels();
 		PlayFlinches(evt);
 
 		if (evt.EventType == CombatEventType.Defeated)
@@ -277,16 +320,19 @@ public partial class BattleController : Control
 
 	private void ApplyEventToLog(CombatEvent evt)
 	{
+		// One cast used to take two lines: "X casts a spell" and then the damage.
+		// Instead the spell's name rides on the strike line itself.
+		string spell = SpellTagFor(evt);
+
 		string line = evt.EventType switch
 		{
-			CombatEventType.AttackMiss => $"{evt.ActorName}: {Tr("COMBAT_MISS")}",
+			CombatEventType.AttackMiss => $"{evt.ActorName}{spell}: {Tr("COMBAT_MISS")}",
 			CombatEventType.AttackBlocked => $"{evt.TargetName}: {Tr("COMBAT_BLOCKED")}",
 			CombatEventType.AttackCountered => $"{evt.ActorName}: {Tr("COMBAT_COUNTERED")}",
 			CombatEventType.AttackPaidBack => $"{evt.ActorName}: {Tr("COMBAT_PAID_BACK")}",
 			CombatEventType.AttackHit => evt.IsCritical
-				? $"{evt.ActorName} -> {evt.TargetName}: {evt.Amount:F0} {Tr("COMBAT_CRITICAL")}"
-				: $"{evt.ActorName} -> {evt.TargetName}: {evt.Amount:F0}",
-			CombatEventType.SpellCast => $"{evt.ActorName} casts a spell",
+				? $"{evt.ActorName}{spell} -> {evt.TargetName}: {evt.Amount:F0} {Tr("COMBAT_CRITICAL")}"
+				: $"{evt.ActorName}{spell} -> {evt.TargetName}: {evt.Amount:F0}",
 			CombatEventType.WeaponDropped => $"{evt.ActorName}'s weapon dropped!",
 			CombatEventType.Defeated => $"{evt.ActorName} defeated!",
 			CombatEventType.BattleTimeout => "Battle timed out",
@@ -297,6 +343,30 @@ public partial class BattleController : Control
 		{
 			LogLabel.AppendText(line + "\n");
 		}
+	}
+
+	/// <summary>
+	/// " (Magic Missile)" when this strike is a spell, empty otherwise. Only hits and
+	/// misses carry it — on a block, counter or payback the event's actor is the
+	/// defender, so the tag would land on the wrong name.
+	/// </summary>
+	private string SpellTagFor(CombatEvent evt)
+	{
+		if (evt.EventType is not (CombatEventType.AttackHit or CombatEventType.AttackMiss))
+		{
+			return string.Empty;
+		}
+
+		if (evt.DamageType is null or DamageType.Physical)
+		{
+			return string.Empty;
+		}
+
+		string name = null;
+		if (evt.ActorName == _player.Name) name = _player.EquippedSpell?.DisplayName;
+		else if (evt.ActorName == _enemy.Name) name = _enemy.EquippedSpell?.DisplayName;
+
+		return name != null ? $" ({name})" : string.Empty;
 	}
 
 	private static string Tr(string key) => TranslationServer.Translate(key);
