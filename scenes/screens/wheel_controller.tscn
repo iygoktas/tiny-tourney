@@ -10,32 +10,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bp2c3")
-CategoryLabel = NodePath("MarginContainer/VBoxContainer/CategoryLabel")
-ResultLabel = NodePath("MarginContainer/VBoxContainer/ResultLabel")
-ContinueButton = NodePath("MarginContainer/VBoxContainer/ContinueButton")
+CategoryLabel = NodePath("CenterContainer/MarginContainer/VBoxContainer/CategoryLabel")
+ResultLabel = NodePath("CenterContainer/MarginContainer/VBoxContainer/ResultLabel")
+ContinueButton = NodePath("CenterContainer/MarginContainer/VBoxContainer/ContinueButton")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1407223089]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1826778283]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=1407223089]
+layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1774405393]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer" unique_id=1774405393]
 layout_mode = 2
 
-[node name="CategoryLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1064078634]
+[node name="CategoryLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1064078634]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="ResultLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1263752921]
+[node name="ResultLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1263752921]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=843291542]
+[node name="ContinueButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=843291542]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4

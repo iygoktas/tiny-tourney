@@ -1,4 +1,5 @@
 using Godot;
+using TinyTourney.Combat;
 
 namespace TinyTourney.UI;
 
@@ -35,6 +36,12 @@ public partial class PreBattleController : Control
 	[Export] public TextureRect PlayerPortrait;
 	[Export] public TextureRect EnemyPortrait;
 
+	// Optional: the "VS" mark between the two cards.
+	[Export] public Label VsLabel;
+
+	private static readonly Color AheadColor = new(0.6f, 0.82f, 0.53f);
+	private static readonly Color BehindColor = new(0.85f, 0.42f, 0.36f);
+
 	public override void _Ready()
 	{
 		var player = BattleContext.PlayerState;
@@ -43,25 +50,27 @@ public partial class PreBattleController : Control
 		ShowPortrait(PlayerPortrait, player, facesRight: true);
 		ShowPortrait(EnemyPortrait, enemy, facesRight: false);
 
+		if (VsLabel != null)
+		{
+			VsLabel.Text = TranslationServer.Translate("LABEL_VS");
+		}
+
 		PlayerNameLabel.Text = player.Name;
-		PlayerHpLabel.Text = $"{TranslationServer.Translate("STAT_HP")}: {player.MaxHp}";
-		PlayerStrLabel.Text = $"{TranslationServer.Translate("STAT_STR")}: {player.Stats.Str}";
-		PlayerSpdLabel.Text = $"{TranslationServer.Translate("STAT_SPD")}: {player.Stats.Spd}";
-		PlayerDurLabel.Text = $"{TranslationServer.Translate("STAT_DUR")}: {player.Stats.Dur}";
-		PlayerDexLabel.Text = $"{TranslationServer.Translate("STAT_DEX")}: {player.Stats.Dex}";
-		PlayerLukLabel.Text = $"{TranslationServer.Translate("STAT_LUK")}: {player.Stats.Luk}";
-		PlayerIntLabel.Text = $"{TranslationServer.Translate("STAT_INT")}: {player.Stats.Int}";
+		EnemyNameLabel.Text = enemy.Name;
+
+		// A side-by-side matchup is only useful if it says who is ahead on each stat,
+		// not just what the numbers are — so every pair is coloured by comparison
+		// rather than only the player's own labels being filled in.
+		SetComparedStat(PlayerHpLabel, EnemyHpLabel, "STAT_HP", player.MaxHp, enemy.MaxHp);
+		SetComparedStat(PlayerStrLabel, EnemyStrLabel, "STAT_STR", player.Stats.Str, enemy.Stats.Str);
+		SetComparedStat(PlayerSpdLabel, EnemySpdLabel, "STAT_SPD", player.Stats.Spd, enemy.Stats.Spd);
+		SetComparedStat(PlayerDurLabel, EnemyDurLabel, "STAT_DUR", player.Stats.Dur, enemy.Stats.Dur);
+		SetComparedStat(PlayerDexLabel, EnemyDexLabel, "STAT_DEX", player.Stats.Dex, enemy.Stats.Dex);
+		SetComparedStat(PlayerLukLabel, EnemyLukLabel, "STAT_LUK", player.Stats.Luk, enemy.Stats.Luk);
+		SetComparedStat(PlayerIntLabel, EnemyIntLabel, "STAT_INT", player.Stats.Int, enemy.Stats.Int);
+
 		PlayerWeaponLabel.Text = player.EquippedWeapon != null ? player.EquippedWeapon.DisplayName : TranslationServer.Translate("ITEM_NONE");
 		PlayerSpellLabel.Text = player.EquippedSpell != null ? player.EquippedSpell.DisplayName : TranslationServer.Translate("ITEM_NONE");
-
-		EnemyNameLabel.Text = enemy.Name;
-		EnemyHpLabel.Text = $"{TranslationServer.Translate("STAT_HP")}: {enemy.MaxHp}";
-		EnemyStrLabel.Text = $"{TranslationServer.Translate("STAT_STR")}: {enemy.Stats.Str}";
-		EnemySpdLabel.Text = $"{TranslationServer.Translate("STAT_SPD")}: {enemy.Stats.Spd}";
-		EnemyDurLabel.Text = $"{TranslationServer.Translate("STAT_DUR")}: {enemy.Stats.Dur}";
-		EnemyDexLabel.Text = $"{TranslationServer.Translate("STAT_DEX")}: {enemy.Stats.Dex}";
-		EnemyLukLabel.Text = $"{TranslationServer.Translate("STAT_LUK")}: {enemy.Stats.Luk}";
-		EnemyIntLabel.Text = $"{TranslationServer.Translate("STAT_INT")}: {enemy.Stats.Int}";
 		EnemyWeaponLabel.Text = enemy.EquippedWeapon != null ? enemy.EquippedWeapon.DisplayName : TranslationServer.Translate("ITEM_NONE");
 		EnemySpellLabel.Text = enemy.EquippedSpell != null ? enemy.EquippedSpell.DisplayName : TranslationServer.Translate("ITEM_NONE");
 
@@ -72,7 +81,36 @@ public partial class PreBattleController : Control
 		FightButton.Pressed += OnFightPressed;
 	}
 
-	private static void ShowPortrait(TextureRect portrait, TinyTourney.Combat.CombatantState state, bool facesRight)
+	/// <summary>
+	/// Writes both sides of one stat row and colours whichever value is ahead — green
+	/// for the higher number, a warm red for the lower, the theme's normal ink colour
+	/// on a tie. Comparing the two panels by eye was the whole point of this screen and
+	/// neither number carried any signal about which one was actually better.
+	/// </summary>
+	private void SetComparedStat(Label mine, Label theirs, string statKey, int myValue, int theirValue)
+	{
+		string label = TranslationServer.Translate(statKey);
+		mine.Text = $"{label}: {myValue}";
+		theirs.Text = $"{label}: {theirValue}";
+
+		if (myValue > theirValue)
+		{
+			mine.AddThemeColorOverride("font_color", AheadColor);
+			theirs.AddThemeColorOverride("font_color", BehindColor);
+		}
+		else if (myValue < theirValue)
+		{
+			mine.AddThemeColorOverride("font_color", BehindColor);
+			theirs.AddThemeColorOverride("font_color", AheadColor);
+		}
+		else
+		{
+			mine.RemoveThemeColorOverride("font_color");
+			theirs.RemoveThemeColorOverride("font_color");
+		}
+	}
+
+	private static void ShowPortrait(TextureRect portrait, CombatantState state, bool facesRight)
 	{
 		if (portrait == null)
 		{

@@ -10,15 +10,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_emdcu")
-MusicCheckButton = NodePath("VBoxContainer/MusicCheckButton")
-SfxCheckButton = NodePath("VBoxContainer/SfxCheckButton")
-LanguageOptionButton = NodePath("VBoxContainer/LanguageOptionButton")
-SlotList = NodePath("VBoxContainer/SlotList")
-DeleteSlotButton = NodePath("VBoxContainer/DeleteSlotButton")
+MusicCheckButton = NodePath("CenterContainer/VBoxContainer/MusicCheckButton")
+SfxCheckButton = NodePath("CenterContainer/VBoxContainer/SfxCheckButton")
+LanguageOptionButton = NodePath("CenterContainer/VBoxContainer/LanguageOptionButton")
+SlotList = NodePath("CenterContainer/VBoxContainer/SlotList")
+DeleteSlotButton = NodePath("CenterContainer/VBoxContainer/DeleteSlotButton")
 DeleteConfirmDialog = NodePath("DeleteConfirmDialog")
-BackButton = NodePath("VBoxContainer/BackButton")
+BackButton = NodePath("CenterContainer/VBoxContainer/BackButton")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1806758850]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=496270004]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,32 +26,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MusicCheckButton" type="CheckButton" parent="VBoxContainer" unique_id=1598868780]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1806758850]
+layout_mode = 2
+
+[node name="MusicCheckButton" type="CheckButton" parent="CenterContainer/VBoxContainer" unique_id=1598868780]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="SfxCheckButton" type="CheckButton" parent="VBoxContainer" unique_id=1519762842]
+[node name="SfxCheckButton" type="CheckButton" parent="CenterContainer/VBoxContainer" unique_id=1519762842]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="LanguageOptionButton" type="OptionButton" parent="VBoxContainer" unique_id=1097262669]
+[node name="LanguageOptionButton" type="OptionButton" parent="CenterContainer/VBoxContainer" unique_id=1097262669]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="SlotList" type="ItemList" parent="VBoxContainer" unique_id=524827897]
+[node name="SlotList" type="ItemList" parent="CenterContainer/VBoxContainer" unique_id=524827897]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="DeleteSlotButton" type="Button" parent="VBoxContainer" unique_id=2080581673]
+[node name="DeleteSlotButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2080581673]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1521814660]
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1521814660]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
