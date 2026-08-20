@@ -31,7 +31,7 @@ BTN_CONTINUE,Continue,Devam Et
 BTN_NEW_CHARACTER,New Character,Yeni Karakter
 BTN_DELETE,Delete,Sil
 BTN_BACK,Back,Geri
-BTN_CHARACTER_SELECT,Switch Character,Karakter Değiştir
+BTN_CHARACTER_SELECT,Characters,Karakterler
 SLOT_EMPTY,Empty Slot,Boş Slot
 CONFIRM_DELETE_TITLE,Delete Character?,Karakteri Sil?
 CONFIRM_DELETE_TEXT,This will permanently delete this character. This cannot be undone.,Bu karakter kalıcı olarak silinecek. Bu işlem geri alınamaz.
