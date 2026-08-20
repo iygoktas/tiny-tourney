@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b5u3svt45wvgp" path="res://scripts/ui/SettingsController.cs" id="1_emdcu"]
 
-[node name="Settings" type="Control" unique_id=201291529 node_paths=PackedStringArray("MusicCheckButton", "SfxCheckButton", "LanguageOptionButton", "SlotList", "DeleteSlotButton", "DeleteConfirmDialog", "BackButton")]
+[node name="Settings" type="Control" unique_id=201291529 node_paths=PackedStringArray("MusicCheckButton", "SfxCheckButton", "LanguageOptionButton", "SlotList", "DeleteSlotButton", "DeleteConfirmDialog", "BackButton", "CharacterSelectButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ SlotList = NodePath("CenterContainer/VBoxContainer/SlotList")
 DeleteSlotButton = NodePath("CenterContainer/VBoxContainer/DeleteSlotButton")
 DeleteConfirmDialog = NodePath("DeleteConfirmDialog")
 BackButton = NodePath("CenterContainer/VBoxContainer/BackButton")
+CharacterSelectButton = NodePath("CenterContainer/VBoxContainer/Button")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=496270004]
 layout_mode = 1
@@ -44,8 +45,12 @@ custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="SlotList" type="ItemList" parent="CenterContainer/VBoxContainer" unique_id=524827897]
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1556750011]
 custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+
+[node name="SlotList" type="ItemList" parent="CenterContainer/VBoxContainer" unique_id=524827897]
+custom_minimum_size = Vector2(280, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 
