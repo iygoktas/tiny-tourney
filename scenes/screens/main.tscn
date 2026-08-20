@@ -30,8 +30,8 @@ RaceLabel = NodePath("CenterContainer/VBoxContainer/TopLine/NameRace/CharacterNa
 XpBar = NodePath("CenterContainer/VBoxContainer/XpBar")
 AttributesHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesHeaderLabel")
 EquipmentHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquipmentHeaderLabel")
-WeaponIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow/WeaponIconTexture")
-SpellIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow/SpellIconTexture")
+WeaponIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow/PanelContainer/WeaponIconTexture")
+SpellIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow/PanelContainer/SpellIconTexture")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1252663196]
 layout_mode = 1
@@ -79,10 +79,11 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="CharacterPortrait" type="TextureRect" parent="CenterContainer/VBoxContainer/Body" unique_id=2105983658]
-custom_minimum_size = Vector2(140, 140)
+custom_minimum_size = Vector2(260, 260)
 layout_mode = 2
+size_flags_vertical = 4
 expand_mode = 1
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="SidePanels" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body" unique_id=2003877124]
 layout_mode = 2
@@ -125,11 +126,10 @@ layout_mode = 2
 
 [node name="EquipmentPanel" type="PanelContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels" unique_id=443688984]
 layout_mode = 2
-theme_type_variation = &"IconSlot"
 
 [node name="EquipmentBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel" unique_id=415845228]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 6
 
 [node name="EquipmentHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=1553821559]
 layout_mode = 2
@@ -137,28 +137,36 @@ theme_type_variation = &"SectionLabel"
 
 [node name="WeaponRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=1767724868]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 6
 
 [node name="EquippedWeaponLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow" unique_id=1735924593]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WeaponIconTexture" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow" unique_id=1276383091]
-custom_minimum_size = Vector2(64, 64)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow" unique_id=2104142889]
+layout_mode = 2
+theme_type_variation = &"IconSlot"
+
+[node name="WeaponIconTexture" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow/PanelContainer" unique_id=1276383091]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
 [node name="SpellRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=1116918779]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 6
 
 [node name="EquippedSpellLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow" unique_id=978460405]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpellIconTexture" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow" unique_id=706265070]
-custom_minimum_size = Vector2(64, 64)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow" unique_id=1428003267]
+layout_mode = 2
+theme_type_variation = &"IconSlot"
+
+[node name="SpellIconTexture" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow/PanelContainer" unique_id=706265070]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
