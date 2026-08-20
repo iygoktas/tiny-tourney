@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c50b2ekt7qsgq" path="res://scripts/ui/CharacterCreateController.cs" id="1_1ff4v"]
 
-[node name="CharacterCreateController" type="Control" unique_id=1661887129 node_paths=PackedStringArray("RaceOptionButton", "NameLineEdit", "ConfirmButton")]
+[node name="CharacterCreateController" type="Control" unique_id=1661887129 node_paths=PackedStringArray("RaceOptionButton", "NameLineEdit", "ConfirmButton", "RacePreview", "RaceDescriptionLabel", "NameWarningLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,9 @@ script = ExtResource("1_1ff4v")
 RaceOptionButton = NodePath("MarginContainer/VBoxContainer/RaceOptionButton")
 NameLineEdit = NodePath("MarginContainer/VBoxContainer/NameLineEdit")
 ConfirmButton = NodePath("MarginContainer/VBoxContainer/ConfirmButton")
+RacePreview = NodePath("MarginContainer/VBoxContainer/RacePreview")
+RaceDescriptionLabel = NodePath("MarginContainer/VBoxContainer/RaceDescriptionLabel")
+NameWarningLabel = NodePath("MarginContainer/VBoxContainer/NameWarningLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1463419802]
 layout_mode = 1
@@ -30,15 +33,33 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 alignment = 1
 
+[node name="RacePreview" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1325801139]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
 [node name="RaceOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer" unique_id=117097477]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="RaceDescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1440684102]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"MutedLabel"
+autowrap_mode = 2
+
 [node name="NameLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=1947329609]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="NameWarningLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1188805045]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.7677867, 0.0936581, 0.16331762, 1)
 
 [node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1129426616]
 custom_minimum_size = Vector2(280, 0)

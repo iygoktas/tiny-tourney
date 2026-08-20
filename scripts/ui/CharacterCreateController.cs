@@ -34,6 +34,7 @@ public partial class CharacterCreateController : Control
 		if (NameWarningLabel != null)
 		{
 			NameWarningLabel.Text = string.Empty;
+			NameLineEdit.TextChanged += _ => NameWarningLabel.Text = string.Empty;
 		}
 
 		if (RaceOptionButton.ItemCount > 0)

@@ -14,6 +14,13 @@ public partial class SettingsController : Control
 	[Export] public ConfirmationDialog DeleteConfirmDialog;
 	[Export] public Button BackButton;
 
+	/// <summary>
+	/// Returns to Character Select so the player can switch which save they're playing.
+	/// Optional: leave it unassigned and Settings simply has no such path, same convention
+	/// as the other screens' optional exports.
+	/// </summary>
+	[Export] public Button CharacterSelectButton;
+
 	private int _selectedSlot = -1;
 
 	public override void _Ready()
@@ -24,6 +31,12 @@ public partial class SettingsController : Control
 		BackButton.Text = TranslationServer.Translate("BTN_BACK");
 		DeleteConfirmDialog.Title = TranslationServer.Translate("CONFIRM_DELETE_TITLE");
 		DeleteConfirmDialog.DialogText = TranslationServer.Translate("CONFIRM_DELETE_TEXT");
+
+		if (CharacterSelectButton != null)
+		{
+			CharacterSelectButton.Text = TranslationServer.Translate("BTN_CHARACTER_SELECT");
+			CharacterSelectButton.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/screens/character_select.tscn");
+		}
 
 		MusicCheckButton.ButtonPressed = AudioSettingsManager.Instance.MusicEnabled;
 		SfxCheckButton.ButtonPressed = AudioSettingsManager.Instance.SfxEnabled;
