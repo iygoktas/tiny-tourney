@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmrb7jmiwtxec" path="res://scripts/ui/MainController.cs" id="1_10bai"]
 
-[node name="Main" type="Control" unique_id=1014004067 node_paths=PackedStringArray("CharacterNameLabel", "LevelLabel", "XpLabel", "StrLabel", "SpdLabel", "DurLabel", "DexLabel", "LukLabel", "IntLabel", "EquippedWeaponLabel", "EquippedSpellLabel", "BattlesWonLabel", "TotalBattlesLabel", "FightButton", "SettingsButton", "CharacterPortrait", "RaceLabel", "XpBar", "AttributesHeaderLabel", "EquipmentHeaderLabel")]
+[node name="Main" type="Control" unique_id=1014004067 node_paths=PackedStringArray("CharacterNameLabel", "LevelLabel", "XpLabel", "StrLabel", "SpdLabel", "DurLabel", "DexLabel", "LukLabel", "IntLabel", "EquippedWeaponLabel", "EquippedSpellLabel", "BattlesWonLabel", "TotalBattlesLabel", "FightButton", "SettingsButton", "CharacterPortrait", "RaceLabel", "XpBar", "AttributesHeaderLabel", "EquipmentHeaderLabel", "WeaponIcon", "SpellIcon")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,8 +19,8 @@ DurLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPan
 DexLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/DexLabel")
 LukLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/LukLabel")
 IntLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesGrid/IntLabel")
-EquippedWeaponLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquippedWeaponLabel")
-EquippedSpellLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquippedSpellLabel")
+EquippedWeaponLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow/EquippedWeaponLabel")
+EquippedSpellLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow/EquippedSpellLabel")
 BattlesWonLabel = NodePath("CenterContainer/VBoxContainer/Record/BattlesWonLabel")
 TotalBattlesLabel = NodePath("CenterContainer/VBoxContainer/Record/TotalBattlesLabel")
 FightButton = NodePath("CenterContainer/VBoxContainer/FightButton")
@@ -30,6 +30,8 @@ RaceLabel = NodePath("CenterContainer/VBoxContainer/TopLine/NameRace/CharacterNa
 XpBar = NodePath("CenterContainer/VBoxContainer/XpBar")
 AttributesHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/AttributesPanel/AttributesBox/AttributesHeaderLabel")
 EquipmentHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquipmentHeaderLabel")
+WeaponIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow/WeaponIconTexture")
+SpellIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow/SpellIconTexture")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1252663196]
 layout_mode = 1
@@ -133,14 +135,31 @@ theme_override_constants/separation = 8
 layout_mode = 2
 theme_type_variation = &"SectionLabel"
 
-[node name="EquippedWeaponLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=1735924593]
+[node name="WeaponRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=1767724868]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EquippedWeaponLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow" unique_id=1735924593]
 layout_mode = 2
 
-[node name="EquippedSpellLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=978460405]
+[node name="WeaponIconTexture" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow" unique_id=1276383091]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpellRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=1116918779]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EquippedSpellLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow" unique_id=978460405]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel" unique_id=1276383091]
+[node name="SpellIconTexture" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow" unique_id=706265070]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="FightButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=689994688]
 custom_minimum_size = Vector2(280, 0)
