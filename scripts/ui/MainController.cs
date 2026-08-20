@@ -257,18 +257,21 @@ public partial class MainController : Control
 				icon.Texture = GD.Load<Texture2D>(path);
 			}
 
-			// Equipped > merely unlocked > locked — a glance should tell them apart.
-			icon.SelfModulate = item.Equipped
-				? new Color(1.35f, 1.1f, 0.55f)
-				: item.Unlocked
-					? Colors.White
-					: new Color(0.12f, 0.12f, 0.12f);
+			// Locked stays a near-black silhouette (DESIGN.md §10). Unlocked and equipped
+			// both show the icon's true colours, unmodified — the equipped weapon here has
+			// to look exactly like the same icon does in the Equipped panel, so "equipped"
+			// is marked on the level label instead of by tinting the icon itself.
+			icon.SelfModulate = item.Unlocked ? Colors.White : new Color(0.12f, 0.12f, 0.12f);
 
 			var levelLabel = new Label
 			{
 				Text = $"Lv.{item.MinLevel}",
 				VerticalAlignment = VerticalAlignment.Center,
 			};
+			if (item.Equipped)
+			{
+				levelLabel.AddThemeColorOverride("font_color", new Color(0.851f, 0.635f, 0.306f));
+			}
 
 			var row = new HBoxContainer();
 			row.AddThemeConstantOverride("separation", 6);
@@ -282,7 +285,10 @@ public partial class MainController : Control
 	{
 		var save = GameState.Instance.Active;
 		return ContentRepository.AllWeapons
-			.OrderBy(w => w.Tier)
+			// MinLevel, not Tier: two weapons can share a tier (W01/W02 are both Tier 1), and
+			// OrderBy only breaks that tie by whatever order the files happened to load in -
+			// not guaranteed to match ascending level. MinLevel sorts unambiguously.
+			.OrderBy(w => w.MinLevel)
 			.Select(w => (w, save.ObtainedWeaponIds.Contains(w.Id)))
 			.ToList();
 	}
@@ -291,7 +297,7 @@ public partial class MainController : Control
 	{
 		var save = GameState.Instance.Active;
 		return ContentRepository.AllSpells
-			.OrderBy(s => s.Tier)
+			.OrderBy(s => s.MinLevel)
 			.Select(s => (s, save.ObtainedSpellIds.Contains(s.Id)))
 			.ToList();
 	}
