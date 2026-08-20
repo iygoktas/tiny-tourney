@@ -32,10 +32,10 @@ AttributesHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/
 EquipmentHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquipmentHeaderLabel")
 WeaponIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow/PanelContainer/WeaponIconTexture")
 SpellIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow/PanelContainer/SpellIconTexture")
-WeaponsHeaderLabel = NodePath("CenterContainer/VBoxContainer/WeaponsHeaderLabel")
-WeaponStripContainer = NodePath("CenterContainer/VBoxContainer/WeaponScroll/WeaponStripContainer")
-SpellsHeaderLabel = NodePath("CenterContainer/VBoxContainer/SpellHeaderLabel")
-SpellStripContainer = NodePath("CenterContainer/VBoxContainer/SpellScroll/SpellStripContainer")
+WeaponsHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/WeaponColumn/WeaponsHeaderLabel")
+WeaponStripContainer = NodePath("")
+SpellsHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SpellColumn/SpellHeaderLabel")
+SpellStripContainer = NodePath("")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1252663196]
 layout_mode = 1
@@ -81,6 +81,22 @@ horizontal_alignment = 1
 [node name="Body" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1807851622]
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="WeaponColumn" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body" unique_id=1625313201]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+
+[node name="WeaponsHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/WeaponColumn" unique_id=1468615243]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+
+[node name="WeaponScroll" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Body/WeaponColumn" unique_id=1027556682]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="WeaponStripContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body/WeaponColumn/WeaponScroll" unique_id=36657337]
+layout_mode = 2
 
 [node name="CharacterPortrait" type="TextureRect" parent="CenterContainer/VBoxContainer/Body" unique_id=2105983658]
 custom_minimum_size = Vector2(260, 260)
@@ -175,28 +191,20 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="WeaponsHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1468615243]
+[node name="SpellColumn" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body" unique_id=1561760822]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+
+[node name="SpellHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SpellColumn" unique_id=351255114]
 layout_mode = 2
 theme_type_variation = &"SectionLabel"
 
-[node name="WeaponScroll" type="ScrollContainer" parent="CenterContainer/VBoxContainer" unique_id=1027556682]
-custom_minimum_size = Vector2(0, 90)
+[node name="SpellScroll" type="ScrollContainer" parent="CenterContainer/VBoxContainer/Body/SpellColumn" unique_id=1882326611]
 layout_mode = 2
-vertical_scroll_mode = 0
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="WeaponStripContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/WeaponScroll" unique_id=1388259741]
-layout_mode = 2
-
-[node name="SpellHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=351255114]
-layout_mode = 2
-theme_type_variation = &"SectionLabel"
-
-[node name="SpellScroll" type="ScrollContainer" parent="CenterContainer/VBoxContainer" unique_id=1882326611]
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
-vertical_scroll_mode = 0
-
-[node name="SpellStripContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/SpellScroll" unique_id=159510638]
+[node name="SpellStripContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body/SpellColumn/SpellScroll" unique_id=144311467]
 layout_mode = 2
 
 [node name="FightButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=689994688]

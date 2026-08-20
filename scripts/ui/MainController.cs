@@ -61,10 +61,12 @@ public partial class MainController : Control
 	/// height — that's already tight on this screen.
 	/// </summary>
 	[Export] public Label WeaponsHeaderLabel;
+	[Export] public ScrollContainer WeaponScroll;
 	[Export] public VBoxContainer WeaponStripContainer;
 
 	/// <summary>Same idea as <see cref="WeaponStripContainer"/>, for the spell catalogue.</summary>
 	[Export] public Label SpellsHeaderLabel;
+	[Export] public ScrollContainer SpellScroll;
 	[Export] public VBoxContainer SpellStripContainer;
 
 	public override void _Ready()
@@ -141,6 +143,14 @@ public partial class MainController : Control
 		{
 			WeaponsHeaderLabel.Text = TranslationServer.Translate("SECTION_WEAPONS");
 		}
+		if (WeaponScroll != null)
+		{
+			// Owned here rather than trusting the Inspector checkbox: a ScrollContainer's
+			// scrolling axis reports ~0 minimum size on its own, so without Expand it never
+			// claims the leftover vertical space in its parent VBoxContainer and everything
+			// inside renders clipped to nothing, even though the content is really there.
+			WeaponScroll.SizeFlagsVertical = SizeFlags.ExpandFill;
+		}
 		if (WeaponStripContainer != null)
 		{
 			PopulateItemStrip(WeaponStripContainer, GetWeaponMenu()
@@ -150,6 +160,10 @@ public partial class MainController : Control
 		if (SpellsHeaderLabel != null)
 		{
 			SpellsHeaderLabel.Text = TranslationServer.Translate("SECTION_SPELLS");
+		}
+		if (SpellScroll != null)
+		{
+			SpellScroll.SizeFlagsVertical = SizeFlags.ExpandFill;
 		}
 		if (SpellStripContainer != null)
 		{
