@@ -38,16 +38,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="LanguageOptionButton" type="OptionButton" parent="CenterContainer/VBoxContainer" unique_id=1097262669]
-custom_minimum_size = Vector2(280, 50)
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1556750011]
-custom_minimum_size = Vector2(240, 50)
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1521814660]
-custom_minimum_size = Vector2(280, 50)
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 

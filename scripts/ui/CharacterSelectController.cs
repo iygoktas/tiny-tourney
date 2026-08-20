@@ -36,6 +36,7 @@ public partial class CharacterSelectController : Control
 	private void RefreshSlotList()
 	{
 		SlotList.Clear();
+		SlotList.TextureFilter = CanvasItem.TextureFilterEnum.Nearest;
 
 		for (int i = 0; i < SaveManager.MaxSlots; i++)
 		{
@@ -45,6 +46,11 @@ public partial class CharacterSelectController : Control
 				var race = ContentRepository.GetRaceById(save.RaceId);
 				string raceLabel = race != null ? TranslationServer.Translate($"RACE_{race.Id.ToUpper()}") : save.RaceId;
 				SlotList.AddItem($"{save.CharacterName} — Lv.{save.Level} {raceLabel}");
+
+				if (race?.ReferenceImagePath is { Length: > 0 } path && ResourceLoader.Exists(path))
+				{
+					SlotList.SetItemIcon(SlotList.ItemCount - 1, GD.Load<Texture2D>(path));
+				}
 			}
 			else
 			{
