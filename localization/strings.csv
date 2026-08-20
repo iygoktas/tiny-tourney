@@ -18,6 +18,12 @@ RACE_ORC,Orc,Ork
 RACE_UNDEAD,Undead,Yarı Ölü
 RACE_DEMON,Demon,İblis
 RACE_CELESTIAL,Celestial,Göksel
+RACE_HUMAN_DESC,Steady and dependable — no single overwhelming strength but no glaring weakness either. Humans adapt to whatever the fight demands.,Sağlam ve güvenilir — tek bir üstünlüğü yok ama belirgin bir zaafı da yok. İnsanlar dövüşün gerektirdiği her şeye uyum sağlar.
+RACE_ELF_DESC,Swift and precise — relying on speed and finesse rather than raw power. An elf would rather not be hit at all than hit back hard.,Hızlı ve isabetli — kaba güce değil çeviklik ve inceliğe güvenir. Bir elf sert vurmaktansa hiç vurulmamayı tercih eder.
+RACE_ORC_DESC,Built for brute force and little else — an orc's plan is usually just the biggest swing available. Subtlety was never the point.,Kaba kuvvet için yaratılmış gerisi pek umurunda değil — bir orkun planı genelde elindeki en büyük darbedir. İncelik hiç mesele olmadı.
+RACE_UNDEAD_DESC,Slow but it hardly matters — the undead don't tire; they don't feel pain; they simply don't stop coming.,Yavaştır ama önemi yoktur — yarı ölüler yorulmaz; acı duymaz; sadece durmadan ilerler.
+RACE_DEMON_DESC,Immense power bought at the cost of its own body — a demon burns hot and fast and pays for it in every hit it takes.,Muazzam güç kendi bedeninin pahasına elde edilir — bir iblis hızlı ve şiddetli yanar ve aldığı her darbede bunun bedelini öder.
+RACE_CELESTIAL_DESC,Not the strongest arm in the arena — but fortune and resilience carry the celestial through fights it has no business winning.,Arenadaki en güçlü kol değildir — ama şans ve dayanıklılık göksel varlığı kazanmaması gereken dövüşlerden bile çıkarır.
 WHEEL_CATEGORY_STAT,Stat,İstatistik
 WHEEL_CATEGORY_WEAPON,Weapon,Silah
 WHEEL_CATEGORY_SPELL,Spell,Büyü
@@ -49,6 +55,7 @@ BTN_SPEED_4X,4x,4x
 BTN_SKIP,Skip,Atla
 BTN_SETTINGS,Settings,Ayarlar
 SLOTS_FULL_HINT,All save slots are full. Delete a character to make room.,Tüm kayıt slotları dolu. Yer açmak için bir karakteri sil.
+WARN_NAME_REQUIRED,Enter a name before confirming.,Onaylamadan önce bir isim gir.
 SECTION_ATTRIBUTES,Attributes,Nitelikler
 SECTION_EQUIPMENT,Equipped,Kuşanılan
 SECTION_RECORD,Record,Sicil

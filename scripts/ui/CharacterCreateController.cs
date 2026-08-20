@@ -1,5 +1,6 @@
 using Godot;
 using TinyTourney.Core;
+using TinyTourney.Data;
 using TinyTourney.Progression;
 
 namespace TinyTourney.UI;
@@ -9,6 +10,12 @@ public partial class CharacterCreateController : Control
 	[Export] public OptionButton RaceOptionButton;
 	[Export] public LineEdit NameLineEdit;
 	[Export] public Button ConfirmButton;
+
+	// Optional — leave unassigned in the scene and these simply won't update.
+	// Lets this controller work before the preview/description nodes exist yet.
+	[Export] public TextureRect RacePreview;
+	[Export] public Label RaceDescriptionLabel;
+	[Export] public Label NameWarningLabel;
 
 	public override void _Ready()
 	{
@@ -22,6 +29,53 @@ public partial class CharacterCreateController : Control
 
 		ConfirmButton.Text = TranslationServer.Translate("BTN_CONFIRM");
 		ConfirmButton.Pressed += OnConfirmPressed;
+
+		RaceOptionButton.ItemSelected += OnRaceSelected;
+		if (NameWarningLabel != null)
+		{
+			NameWarningLabel.Text = string.Empty;
+		}
+
+		if (RaceOptionButton.ItemCount > 0)
+		{
+			RaceOptionButton.Selected = 0;
+			OnRaceSelected(0);
+		}
+	}
+
+	private void OnRaceSelected(long index)
+	{
+		string raceId = (string)RaceOptionButton.GetItemMetadata((int)index);
+		var race = ContentRepository.GetRaceById(raceId);
+		ShowRacePreview(race);
+
+		if (NameWarningLabel != null)
+		{
+			NameWarningLabel.Text = string.Empty;
+		}
+	}
+
+	private void ShowRacePreview(RaceData race)
+	{
+		if (RacePreview != null)
+		{
+			RacePreview.TextureFilter = CanvasItem.TextureFilterEnum.Nearest;
+			if (race?.ReferenceImagePath is { Length: > 0 } path && ResourceLoader.Exists(path))
+			{
+				RacePreview.Texture = GD.Load<Texture2D>(path);
+			}
+			else
+			{
+				RacePreview.Texture = null;
+			}
+		}
+
+		if (RaceDescriptionLabel != null)
+		{
+			RaceDescriptionLabel.Text = race != null
+				? TranslationServer.Translate($"RACE_{race.Id.ToUpper()}_DESC")
+				: string.Empty;
+		}
 	}
 
 	private void OnConfirmPressed()
@@ -29,6 +83,10 @@ public partial class CharacterCreateController : Control
 		string characterName = NameLineEdit.Text.Trim();
 		if (string.IsNullOrEmpty(characterName) || RaceOptionButton.Selected < 0)
 		{
+			if (NameWarningLabel != null && string.IsNullOrEmpty(characterName))
+			{
+				NameWarningLabel.Text = TranslationServer.Translate("WARN_NAME_REQUIRED");
+			}
 			return;
 		}
 
