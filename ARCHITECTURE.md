@@ -102,15 +102,17 @@ The full state of the active character: race, name, level, XP, current stats, eq
 
 Each step is a separate, verifiable piece (Claude stops after each step, the user checks):
 
-1. Project skeleton + folder structure + data model classes (RaceData, StatBlock, Weapon/Spell)
-2. Under `data/`, the 6 races + a few sample weapon/spell definitions (the full lists of 10 each filled in later)
-3. GameState singleton + save/load system (4-5 slots) — no UI yet, testable logic
-4. Combat engine (pure logic, producing an event list) — test by logging to console
-5. XP/level + wheel logic (including tier/pool lock) — again tested at the logic level
-6. Localization infrastructure
-7. UI controller scripts (wired as the user builds scenes): character create/select → main screen → battle → wheel → statistics → settings
-8. Asset integration (user wires to scenes), speed control, VFX/floating text pooling
-9. Last: wiring assets into the audio infrastructure
+1. ✅ Project skeleton + folder structure + data model classes (RaceData, StatBlock, Weapon/Spell)
+2. ✅ Under `data/`, the 6 races + a few sample weapon/spell definitions (the full lists of 10 each filled in later) — **all 10 weapons, all 10 spells, all 6 races are fully defined**, not just samples
+3. ✅ GameState singleton + save/load system (4-5 slots) — no UI yet, testable logic
+4. ✅ Combat engine (pure logic, producing an event list) — test by logging to console
+5. ✅ XP/level + wheel logic (including tier/pool lock) — again tested at the logic level
+6. ✅ Localization infrastructure — tr/en, all UI strings key-based
+7. ✅ UI controller scripts (wired as the user builds scenes): character create/select → main screen → battle → wheel → statistics → settings — **all screens built and laid out except Wheel, which is still a plain centered layout with no actual spinning wheel**
+8. 🟡 Asset integration — **character sprites (6 races), all 20 weapon/spell icons, and the full wood/brass UI theme are done and wired.** Speed control (1x/2x/4x/skip) and floating-text/hit-stop combat juice are done. Arena background art is NOT done (user is sourcing this separately). The Wheel screen's actual spin interaction is NOT built yet.
+9. ⬜ Not started: wiring assets into the audio infrastructure (deferred to the end per design, per CLAUDE.md)
+
+_Status as of the UI/asset polish pass — see project memory for the detailed history and lessons if picking this back up. Statistics screen (`StatisticsController.cs`) has no `.tscn` yet — it's the one controller script still without a scene._
 
 ---
 
