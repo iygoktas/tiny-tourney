@@ -54,6 +54,18 @@ public partial class MainController : Control
 	/// <summary>The equipped spell's icon, meant to sit inside an IconSlot socket.</summary>
 	[Export] public TextureRect SpellIcon;
 
+	/// <summary>
+	/// The full weapon catalogue, DESIGN.md §8's "locked ones shadowed/silhouetted" menu.
+	/// Meant to sit inside a horizontally-scrolling ScrollContainer so the row of icons
+	/// never grows the screen's height, however many weapons get added later.
+	/// </summary>
+	[Export] public Label WeaponsHeaderLabel;
+	[Export] public HBoxContainer WeaponStripContainer;
+
+	/// <summary>Same idea as <see cref="WeaponStripContainer"/>, for the spell catalogue.</summary>
+	[Export] public Label SpellsHeaderLabel;
+	[Export] public HBoxContainer SpellStripContainer;
+
 	public override void _Ready()
 	{
 		RefreshLabels();
@@ -123,6 +135,27 @@ public partial class MainController : Control
 
 		ShowIcon(WeaponIcon, weapon?.IconPath);
 		ShowIcon(SpellIcon, spell?.IconPath);
+
+		if (WeaponsHeaderLabel != null)
+		{
+			WeaponsHeaderLabel.Text = TranslationServer.Translate("SECTION_WEAPONS");
+		}
+		if (WeaponStripContainer != null)
+		{
+			PopulateItemStrip(WeaponStripContainer, GetWeaponMenu()
+				.Select(w => (w.Data.IconPath, w.Data.MinLevel, w.Data.DisplayName, w.Unlocked, w.Data.Id == save.EquippedWeaponId)));
+		}
+
+		if (SpellsHeaderLabel != null)
+		{
+			SpellsHeaderLabel.Text = TranslationServer.Translate("SECTION_SPELLS");
+		}
+		if (SpellStripContainer != null)
+		{
+			PopulateItemStrip(SpellStripContainer, GetSpellMenu()
+				.Select(s => (s.Data.IconPath, s.Data.MinLevel, s.Data.DisplayName, s.Unlocked, s.Data.Id == save.EquippedSpellId)));
+		}
+
 		BattlesWonLabel.Text = $"{TranslationServer.Translate("LABEL_BATTLES_WON")}: {save.Statistics.BattlesWon}";
 		TotalBattlesLabel.Text = $"{TranslationServer.Translate("LABEL_TOTAL_BATTLES")}: {save.Statistics.TotalBattlesPlayed}";
 
@@ -173,6 +206,57 @@ public partial class MainController : Control
 		{
 			slot.Texture = null;
 			slot.Visible = false;
+		}
+	}
+
+	/// <summary>
+	/// Fills a horizontal strip with one icon+level entry per catalogue item. Locked items
+	/// are darkened via SelfModulate rather than a separate asset, per DESIGN.md §10 — same
+	/// icon, just dimmed down to a near-black silhouette. The full name only shows as a
+	/// tooltip, so a strip of 10 items stays compact enough to scroll instead of wrap.
+	/// </summary>
+	private static void PopulateItemStrip(
+		Container container,
+		IEnumerable<(string IconPath, int MinLevel, string Name, bool Unlocked, bool Equipped)> items)
+	{
+		foreach (Node child in container.GetChildren())
+		{
+			child.QueueFree();
+		}
+
+		foreach (var item in items)
+		{
+			var icon = new TextureRect
+			{
+				CustomMinimumSize = new Vector2(48, 48),
+				ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+				StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+				TextureFilter = CanvasItem.TextureFilterEnum.Nearest,
+				TooltipText = $"{item.Name} (Lv.{item.MinLevel})",
+			};
+
+			if (item.IconPath is { Length: > 0 } path && ResourceLoader.Exists(path))
+			{
+				icon.Texture = GD.Load<Texture2D>(path);
+			}
+
+			// Equipped > merely unlocked > locked — a glance should tell them apart.
+			icon.SelfModulate = item.Equipped
+				? new Color(1.35f, 1.1f, 0.55f)
+				: item.Unlocked
+					? Colors.White
+					: new Color(0.12f, 0.12f, 0.12f);
+
+			var levelLabel = new Label
+			{
+				Text = $"Lv.{item.MinLevel}",
+				HorizontalAlignment = HorizontalAlignment.Center,
+			};
+
+			var box = new VBoxContainer();
+			box.AddChild(icon);
+			box.AddChild(levelLabel);
+			container.AddChild(box);
 		}
 	}
 

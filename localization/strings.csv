@@ -60,4 +60,6 @@ WARN_NAME_REQUIRED,Enter a name before confirming.,Onaylamadan önce bir isim gi
 SECTION_ATTRIBUTES,Attributes,Nitelikler
 SECTION_EQUIPMENT,Equipped,Kuşanılan
 SECTION_RECORD,Record,Sicil
+SECTION_WEAPONS,Weapons,Silahlar
+SECTION_SPELLS,Spells,Büyüler
 LABEL_VS,VS,VS
