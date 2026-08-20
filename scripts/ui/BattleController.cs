@@ -76,8 +76,8 @@ public partial class BattleController : Control
 		// With that label turned off, and StyleBoxTexture reporting only its margins
 		// (not the source image's full height) as its minimum size, the bar collapsed
 		// to a sliver. Pin a real height instead of relying on either.
-		PlayerHpBar.CustomMinimumSize = new Vector2(0f, 26f);
-		EnemyHpBar.CustomMinimumSize = new Vector2(0f, 26f);
+		PlayerHpBar.CustomMinimumSize = new Vector2(0f, 32f);
+		EnemyHpBar.CustomMinimumSize = new Vector2(0f, 32f);
 
 		// Keeps the newest line in view as the log fills, rather than the player
 		// having to scroll to see what just happened.

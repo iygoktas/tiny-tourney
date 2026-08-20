@@ -141,9 +141,10 @@ theme_override_constants/separation = 8
 
 [node name="EquippedWeaponLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow" unique_id=1735924593]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="WeaponIconTexture" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow" unique_id=1276383091]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
@@ -154,9 +155,10 @@ theme_override_constants/separation = 8
 
 [node name="EquippedSpellLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow" unique_id=978460405]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="SpellIconTexture" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow" unique_id=706265070]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
