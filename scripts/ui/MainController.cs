@@ -56,15 +56,16 @@ public partial class MainController : Control
 
 	/// <summary>
 	/// The full weapon catalogue, DESIGN.md §8's "locked ones shadowed/silhouetted" menu.
-	/// Meant to sit inside a horizontally-scrolling ScrollContainer so the row of icons
-	/// never grows the screen's height, however many weapons get added later.
+	/// Meant to sit inside a vertically-scrolling ScrollContainer in the empty margin
+	/// beside the portrait, so it fills existing side space instead of adding screen
+	/// height — that's already tight on this screen.
 	/// </summary>
 	[Export] public Label WeaponsHeaderLabel;
-	[Export] public HBoxContainer WeaponStripContainer;
+	[Export] public VBoxContainer WeaponStripContainer;
 
 	/// <summary>Same idea as <see cref="WeaponStripContainer"/>, for the spell catalogue.</summary>
 	[Export] public Label SpellsHeaderLabel;
-	[Export] public HBoxContainer SpellStripContainer;
+	[Export] public VBoxContainer SpellStripContainer;
 
 	public override void _Ready()
 	{
@@ -210,10 +211,12 @@ public partial class MainController : Control
 	}
 
 	/// <summary>
-	/// Fills a horizontal strip with one icon+level entry per catalogue item. Locked items
-	/// are darkened via SelfModulate rather than a separate asset, per DESIGN.md §10 — same
-	/// icon, just dimmed down to a near-black silhouette. The full name only shows as a
-	/// tooltip, so a strip of 10 items stays compact enough to scroll instead of wrap.
+	/// Fills a vertical strip with one icon+level row per catalogue item — meant to live in
+	/// a vertically-scrolling ScrollContainer in the margin beside the portrait, so 10 items
+	/// cost zero extra screen height, however many rows don't fit before it scrolls. Locked
+	/// items are darkened via SelfModulate rather than a separate asset, per DESIGN.md §10 —
+	/// same icon, just dimmed to a near-black silhouette. The full name only shows as a
+	/// tooltip, so each row stays as compact as the icon itself.
 	/// </summary>
 	private static void PopulateItemStrip(
 		Container container,
@@ -228,7 +231,7 @@ public partial class MainController : Control
 		{
 			var icon = new TextureRect
 			{
-				CustomMinimumSize = new Vector2(48, 48),
+				CustomMinimumSize = new Vector2(36, 36),
 				ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
 				StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
 				TextureFilter = CanvasItem.TextureFilterEnum.Nearest,
@@ -250,13 +253,14 @@ public partial class MainController : Control
 			var levelLabel = new Label
 			{
 				Text = $"Lv.{item.MinLevel}",
-				HorizontalAlignment = HorizontalAlignment.Center,
+				VerticalAlignment = VerticalAlignment.Center,
 			};
 
-			var box = new VBoxContainer();
-			box.AddChild(icon);
-			box.AddChild(levelLabel);
-			container.AddChild(box);
+			var row = new HBoxContainer();
+			row.AddThemeConstantOverride("separation", 6);
+			row.AddChild(icon);
+			row.AddChild(levelLabel);
+			container.AddChild(row);
 		}
 	}
 

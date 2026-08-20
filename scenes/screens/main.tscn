@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmrb7jmiwtxec" path="res://scripts/ui/MainController.cs" id="1_10bai"]
 
-[node name="Main" type="Control" unique_id=1014004067 node_paths=PackedStringArray("CharacterNameLabel", "LevelLabel", "XpLabel", "StrLabel", "SpdLabel", "DurLabel", "DexLabel", "LukLabel", "IntLabel", "EquippedWeaponLabel", "EquippedSpellLabel", "BattlesWonLabel", "TotalBattlesLabel", "FightButton", "SettingsButton", "CharacterPortrait", "RaceLabel", "XpBar", "AttributesHeaderLabel", "EquipmentHeaderLabel", "WeaponIcon", "SpellIcon")]
+[node name="Main" type="Control" unique_id=1014004067 node_paths=PackedStringArray("CharacterNameLabel", "LevelLabel", "XpLabel", "StrLabel", "SpdLabel", "DurLabel", "DexLabel", "LukLabel", "IntLabel", "EquippedWeaponLabel", "EquippedSpellLabel", "BattlesWonLabel", "TotalBattlesLabel", "FightButton", "SettingsButton", "CharacterPortrait", "RaceLabel", "XpBar", "AttributesHeaderLabel", "EquipmentHeaderLabel", "WeaponIcon", "SpellIcon", "WeaponsHeaderLabel", "WeaponStripContainer", "SpellsHeaderLabel", "SpellStripContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +32,10 @@ AttributesHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/
 EquipmentHeaderLabel = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/EquipmentHeaderLabel")
 WeaponIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/WeaponRow/PanelContainer/WeaponIconTexture")
 SpellIcon = NodePath("CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox/SpellRow/PanelContainer/SpellIconTexture")
+WeaponsHeaderLabel = NodePath("CenterContainer/VBoxContainer/WeaponsHeaderLabel")
+WeaponStripContainer = NodePath("CenterContainer/VBoxContainer/WeaponScroll/WeaponStripContainer")
+SpellsHeaderLabel = NodePath("CenterContainer/VBoxContainer/SpellHeaderLabel")
+SpellStripContainer = NodePath("CenterContainer/VBoxContainer/SpellScroll/SpellStripContainer")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1252663196]
 layout_mode = 1
@@ -170,6 +174,30 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="WeaponsHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1468615243]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+
+[node name="WeaponScroll" type="ScrollContainer" parent="CenterContainer/VBoxContainer" unique_id=1027556682]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="WeaponStripContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/WeaponScroll" unique_id=1388259741]
+layout_mode = 2
+
+[node name="SpellHeaderLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=351255114]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+
+[node name="SpellScroll" type="ScrollContainer" parent="CenterContainer/VBoxContainer" unique_id=1882326611]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="SpellStripContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/SpellScroll" unique_id=159510638]
+layout_mode = 2
 
 [node name="FightButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=689994688]
 custom_minimum_size = Vector2(280, 0)
