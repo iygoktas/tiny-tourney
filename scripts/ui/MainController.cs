@@ -48,6 +48,12 @@ public partial class MainController : Control
 	[Export] public Label AttributesHeaderLabel;
 	[Export] public Label EquipmentHeaderLabel;
 
+	/// <summary>The equipped weapon's icon, meant to sit inside an IconSlot socket.</summary>
+	[Export] public TextureRect WeaponIcon;
+
+	/// <summary>The equipped spell's icon, meant to sit inside an IconSlot socket.</summary>
+	[Export] public TextureRect SpellIcon;
+
 	public override void _Ready()
 	{
 		RefreshLabels();
@@ -106,15 +112,17 @@ public partial class MainController : Control
 		DexLabel.Text = $"{TranslationServer.Translate("STAT_DEX")}: {stats.Dex}";
 		LukLabel.Text = $"{TranslationServer.Translate("STAT_LUK")}: {stats.Luk}";
 		IntLabel.Text = $"{TranslationServer.Translate("STAT_INT")}: {stats.Int}";
-		string weaponName = save.EquippedWeaponId != null
-			? ContentRepository.GetWeaponById(save.EquippedWeaponId).DisplayName
-			: TranslationServer.Translate("ITEM_NONE");
-		string spellName = save.EquippedSpellId != null
-			? ContentRepository.GetSpellById(save.EquippedSpellId).DisplayName
-			: TranslationServer.Translate("ITEM_NONE");
+		var weapon = save.EquippedWeaponId != null ? ContentRepository.GetWeaponById(save.EquippedWeaponId) : null;
+		var spell = save.EquippedSpellId != null ? ContentRepository.GetSpellById(save.EquippedSpellId) : null;
+
+		string weaponName = weapon != null ? weapon.DisplayName : TranslationServer.Translate("ITEM_NONE");
+		string spellName = spell != null ? spell.DisplayName : TranslationServer.Translate("ITEM_NONE");
 
 		EquippedWeaponLabel.Text = $"{TranslationServer.Translate("LABEL_WEAPON")}: {weaponName}";
 		EquippedSpellLabel.Text = $"{TranslationServer.Translate("LABEL_SPELL")}: {spellName}";
+
+		ShowIcon(WeaponIcon, weapon?.IconPath);
+		ShowIcon(SpellIcon, spell?.IconPath);
 		BattlesWonLabel.Text = $"{TranslationServer.Translate("LABEL_BATTLES_WON")}: {save.Statistics.BattlesWon}";
 		TotalBattlesLabel.Text = $"{TranslationServer.Translate("LABEL_TOTAL_BATTLES")}: {save.Statistics.TotalBattlesPlayed}";
 
@@ -140,6 +148,31 @@ public partial class MainController : Control
 		{
 			CharacterPortrait.Texture = null;
 			GD.PushWarning($"[MainController] No portrait for race '{race?.Id ?? "null"}'.");
+		}
+	}
+
+	/// <summary>
+	/// Loads a weapon or spell's icon into its socket. Empty-handed (no weapon or spell
+	/// equipped yet) is a real, expected state — the icon is just cleared, not an error.
+	/// </summary>
+	private static void ShowIcon(TextureRect slot, string iconPath)
+	{
+		if (slot == null)
+		{
+			return;
+		}
+
+		slot.TextureFilter = CanvasItem.TextureFilterEnum.Nearest;
+
+		if (iconPath is { Length: > 0 } path && ResourceLoader.Exists(path))
+		{
+			slot.Texture = GD.Load<Texture2D>(path);
+			slot.Visible = true;
+		}
+		else
+		{
+			slot.Texture = null;
+			slot.Visible = false;
 		}
 	}
 

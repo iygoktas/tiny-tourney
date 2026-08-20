@@ -123,6 +123,7 @@ layout_mode = 2
 
 [node name="EquipmentPanel" type="PanelContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels" unique_id=443688984]
 layout_mode = 2
+theme_type_variation = &"IconSlot"
 
 [node name="EquipmentBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel" unique_id=415845228]
 layout_mode = 2
@@ -136,6 +137,9 @@ theme_type_variation = &"SectionLabel"
 layout_mode = 2
 
 [node name="EquippedSpellLabel" type="Label" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel/EquipmentBox" unique_id=978460405]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/Body/SidePanels/EquipmentPanel" unique_id=1276383091]
 layout_mode = 2
 
 [node name="FightButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=689994688]
